@@ -1,0 +1,1364 @@
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0b0f19" />
+
+  <title>Investment Plans | DaiFinance.</title>
+  <meta name="description" content="Explore DaiFinance investment plan tiers, review investment terms, compare features, and learn about investment risks before making a decision." />
+
+  <!-- Tailwind CSS CDN: use a compiled stylesheet in production -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink: "#0b0f19",
+            panel: "#111827",
+            mint: "#10b981",
+            neon: "#34d399",
+            muted: "#94a3b8",
+            line: "#243044"
+          },
+          fontFamily: {
+            sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"]
+          },
+          boxShadow: {
+            glow: "0 0 35px rgba(16,185,129,.12)",
+            card: "0 18px 60px rgba(0,0,0,.24)"
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    :root {
+      color-scheme: dark;
+      --ink: #0b0f19;
+      --panel: #111827;
+      --mint: #10b981;
+      --neon: #34d399;
+      --line: rgba(148, 163, 184, .15);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--ink);
+      color: #f8fafc;
+      font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection {
+      background: rgba(16,185,129,.35);
+      color: white;
+    }
+
+    a, button, input {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible {
+      outline: 2px solid var(--neon);
+      outline-offset: 4px;
+    }
+
+    .site-header {
+      background: rgba(11,15,25,.84);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    .hero-glow {
+      background:
+        radial-gradient(ellipse at 50% 0%, rgba(16,185,129,.13), transparent 54%),
+        radial-gradient(ellipse at 100% 70%, rgba(59,130,246,.055), transparent 45%);
+    }
+
+    .grid-pattern {
+      background-image:
+        linear-gradient(rgba(148,163,184,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(148,163,184,.035) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: linear-gradient(to bottom, black, transparent 90%);
+    }
+
+    .glass {
+      background: rgba(17,24,39,.78);
+      border: 1px solid var(--line);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+
+    .mint-text {
+      background: linear-gradient(100deg,#6ee7b7,#10b981);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .primary-btn {
+      background: #10b981;
+      color: #04120d;
+      transition: background .2s ease, transform .2s ease,
+                  box-shadow .2s ease;
+    }
+
+    .primary-btn:hover {
+      background: #34d399;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 30px rgba(16,185,129,.2);
+    }
+
+    .secondary-btn {
+      border: 1px solid rgba(148,163,184,.25);
+      background: rgba(255,255,255,.025);
+      transition: background .2s ease, border-color .2s ease;
+    }
+
+    .secondary-btn:hover {
+      background: rgba(255,255,255,.06);
+      border-color: rgba(52,211,153,.4);
+    }
+
+    .plan-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      overflow: hidden;
+      transition: transform .25s ease, border-color .25s ease,
+                  box-shadow .25s ease;
+    }
+
+    .plan-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(52,211,153,.4);
+      box-shadow: 0 20px 55px rgba(0,0,0,.24);
+    }
+
+    .plan-card.popular {
+      border-color: rgba(52,211,153,.65);
+      box-shadow: 0 0 32px rgba(16,185,129,.08);
+    }
+
+    .plan-card.popular::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto;
+      height: 2px;
+      background: linear-gradient(90deg,transparent,#34d399,transparent);
+    }
+
+    .icon-tile {
+      background: linear-gradient(145deg,rgba(16,185,129,.16),rgba(16,185,129,.035));
+      border: 1px solid rgba(52,211,153,.17);
+    }
+
+    .plan-badge {
+      border: 1px solid rgba(52,211,153,.3);
+      background: rgba(16,185,129,.12);
+      color: #6ee7b7;
+    }
+
+    .check-icon {
+      display: inline-flex;
+      height: 18px;
+      width: 18px;
+      flex: 0 0 18px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: rgba(16,185,129,.12);
+      color: #6ee7b7;
+    }
+
+    .trust-icon {
+      background: rgba(16,185,129,.09);
+      border: 1px solid rgba(52,211,153,.16);
+      color: #6ee7b7;
+    }
+
+    .nav-link {
+      transition: color .2s ease;
+    }
+
+    .nav-link:hover,
+    .nav-link[aria-current="page"] {
+      color: #6ee7b7;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity .5s ease, transform .5s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .modal-backdrop {
+      background: rgba(3,7,18,.78);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .modal-panel {
+      max-height: min(88vh, 850px);
+      overflow-y: auto;
+    }
+
+    input[type="number"] {
+      color-scheme: dark;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+        animation-duration: .01ms !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+</head>
+
+<body class="min-h-screen overflow-x-hidden">
+
+  <!-- =========================================
+       HEADER
+       Match this shared structure across pages.
+  ========================================== -->
+  <header class="site-header sticky top-0 z-40 border-b border-white/[0.07]">
+    <div class="mx-auto flex h-[76px] max-w-7xl items-center justify-between px-5 sm:px-8 lg:px-10">
+
+      <a href="index.html" class="flex shrink-0 items-center gap-2.5" aria-label="DaiFinance home">
+        <span class="flex h-9 w-9 items-center justify-center rounded-xl border border-emerald-400/20 bg-emerald-400/10 text-emerald-300">
+          <i data-lucide="chart-no-axes-combined" class="h-5 w-5"></i>
+        </span>
+        <span class="text-[21px] font-extrabold tracking-tight text-white">
+          DaiFinance<span class="text-emerald-400">.</span>
+        </span>
+      </a>
+
+      <nav class="hidden items-center gap-7 lg:flex" aria-label="Main navigation">
+        <a href="about.html" class="nav-link text-sm font-medium text-slate-400">About Us</a>
+        <a href="services.html" class="nav-link text-sm font-medium text-slate-400">Services</a>
+        <a href="investment-plans.html" aria-current="page" class="nav-link text-sm font-medium text-white">Investment Plans</a>
+        <a href="faq.html" class="nav-link text-sm font-medium text-slate-400">FAQ</a>
+      </nav>
+
+      <div class="hidden items-center gap-3 lg:flex">
+        <a href="login.html" class="rounded-lg px-4 py-2.5 text-sm font-semibold text-slate-300 transition hover:text-white">
+          Sign In
+        </a>
+        <a href="register.html" class="primary-btn inline-flex items-center gap-2 rounded-lg px-4 py-2.5 text-sm font-bold">
+          Create Account
+          <i data-lucide="arrow-up-right" class="h-4 w-4"></i>
+        </a>
+      </div>
+
+      <button id="mobile-menu-button"
+              type="button"
+              class="flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 text-slate-200 lg:hidden"
+              aria-label="Open navigation menu"
+              aria-expanded="false"
+              aria-controls="mobile-menu">
+        <i data-lucide="menu" class="h-5 w-5"></i>
+      </button>
+    </div>
+
+    <div id="mobile-menu" class="hidden border-t border-white/[0.07] bg-[#0b0f19] px-5 py-5 lg:hidden">
+      <nav class="mx-auto flex max-w-7xl flex-col gap-1" aria-label="Mobile navigation">
+        <a href="about.html" class="rounded-lg px-3 py-3 text-sm text-slate-300 hover:bg-white/5">About Us</a>
+        <a href="services.html" class="rounded-lg px-3 py-3 text-sm text-slate-300 hover:bg-white/5">Services</a>
+        <a href="investment-plans.html" aria-current="page" class="rounded-lg bg-emerald-400/[0.07] px-3 py-3 text-sm font-semibold text-emerald-300">Investment Plans</a>
+        <a href="faq.html" class="rounded-lg px-3 py-3 text-sm text-slate-300 hover:bg-white/5">FAQ</a>
+        <div class="mt-3 grid grid-cols-2 gap-3 border-t border-white/10 pt-4">
+          <a href="login.html" class="secondary-btn rounded-lg px-3 py-3 text-center text-sm font-semibold">Sign In</a>
+          <a href="register.html" class="primary-btn rounded-lg px-3 py-3 text-center text-sm font-bold">Create Account</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- =========================================
+         HERO
+    ========================================== -->
+    <section class="hero-glow relative overflow-hidden">
+      <div class="grid-pattern pointer-events-none absolute inset-0"></div>
+
+      <div class="relative mx-auto max-w-7xl px-5 pb-16 pt-20 text-center sm:px-8 sm:pb-20 sm:pt-24 lg:px-10 lg:pt-28">
+        <div class="reveal mx-auto max-w-4xl">
+          <div class="mb-7 inline-flex items-center gap-2 rounded-full border border-emerald-400/20 bg-emerald-400/[0.07] px-3.5 py-2 text-xs font-semibold tracking-wide text-emerald-300">
+            <i data-lucide="layers-3" class="h-4 w-4"></i>
+            INVESTMENT OPTIONS
+          </div>
+
+          <h1 class="text-4xl font-extrabold leading-[1.12] tracking-[-0.045em] text-white sm:text-5xl lg:text-6xl">
+            Choose Your Path to
+            <span class="mint-text">Wealth.</span>
+          </h1>
+
+          <p class="mx-auto mt-6 max-w-2xl text-base leading-8 text-slate-400 sm:text-lg">
+            Compare investment tiers, review the proposed terms, and understand
+            the risks before deciding which option fits your financial goals.
+            Clear information should come before any financial commitment.
+          </p>
+
+          <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <a href="#plans" class="primary-btn inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3.5 text-sm font-bold">
+              Compare Investment Plans
+              <i data-lucide="arrow-down" class="h-4 w-4"></i>
+            </a>
+            <a href="contact.html" class="secondary-btn inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3.5 text-sm font-semibold text-slate-200">
+              Talk to Our Team
+              <i data-lucide="message-circle" class="h-4 w-4"></i>
+            </a>
+          </div>
+
+          <div class="mt-9 flex flex-wrap justify-center gap-x-6 gap-y-3 text-xs text-slate-500">
+            <span class="inline-flex items-center gap-2">
+              <i data-lucide="file-text" class="h-4 w-4 text-emerald-400"></i>
+              Review terms
+            </span>
+            <span class="inline-flex items-center gap-2">
+              <i data-lucide="shield-check" class="h-4 w-4 text-emerald-400"></i>
+              Understand the risks
+            </span>
+            <span class="inline-flex items-center gap-2">
+              <i data-lucide="eye" class="h-4 w-4 text-emerald-400"></i>
+              Check fees and conditions
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================
+         IMPORTANT RETURN DISCLOSURE
+    ========================================== -->
+    <section class="px-5 pb-5 sm:px-8 lg:px-10" aria-label="Investment risk disclosure">
+      <div class="mx-auto flex max-w-7xl items-start gap-4 rounded-2xl border border-amber-400/20 bg-amber-400/[0.045] p-5 sm:p-6">
+        <span class="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-amber-300/15 bg-amber-300/[0.08] text-amber-300">
+          <i data-lucide="alert-triangle" class="h-5 w-5"></i>
+        </span>
+        <div>
+          <h2 class="text-sm font-bold text-amber-200">Important: review all return claims carefully</h2>
+          <p class="mt-2 text-sm leading-6 text-slate-400">
+            The daily rates shown below are user-supplied concept figures, not
+            independently verified performance. They are not guarantees or
+            promises of earnings. Returns of this magnitude require strong
+            independent evidence and careful regulatory review before being
+            advertised as genuine investment products. You can lose some or all
+            of the money invested.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================
+         PLAN CARDS
+    ========================================== -->
+    <section id="plans" class="scroll-mt-24 px-5 py-16 sm:px-8 sm:py-20 lg:px-10">
+      <div class="mx-auto max-w-7xl">
+
+        <div class="reveal mx-auto max-w-3xl text-center">
+          <span class="text-xs font-bold uppercase tracking-[.22em] text-emerald-400">Find your tier</span>
+          <h2 class="mt-4 text-3xl font-bold tracking-tight text-white sm:text-4xl">
+            Investment plans for <span class="mint-text">different goals.</span>
+          </h2>
+          <p class="mt-4 text-sm leading-7 text-slate-400 sm:text-base">
+            Compare the proposed minimums, maximums, terms, and included
+            platform features. Selecting a plan opens a review dialog; it does
+            not make an investment or transfer funds.
+          </p>
+        </div>
+
+        <!-- All eight plans: 1 column mobile, 2 tablet, 4 desktop -->
+        <div class="mt-12 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
+
+          <!-- BASIC -->
+          <article class="plan-card glass reveal rounded-2xl p-5 sm:p-6"
+                   data-plan="Basic"
+                   data-rate="1.50"
+                   data-min="200"
+                   data-max="1999"
+                   data-term="30 days">
+            <div class="flex items-start justify-between gap-3">
+              <span class="icon-tile flex h-11 w-11 items-center justify-center rounded-xl text-emerald-300">
+                <i data-lucide="sprout" class="h-5 w-5"></i>
+              </span>
+              <span class="rounded-full border border-white/10 px-2.5 py-1 text-[10px] font-semibold text-slate-400">STARTER</span>
+            </div>
+
+            <h3 class="mt-5 text-xl font-bold text-white">Basic</h3>
+            <p class="mt-1 text-xs leading-5 text-slate-400">An entry-level concept tier.</p>
+
+            <div class="mt-6 rounded-xl border border-white/[0.07] bg-[#0b0f19]/70 p-4">
+              <p class="text-[10px] font-semibold uppercase tracking-wider text-slate-500">Supplied daily rate*</p>
+              <div class="mt-2 flex items-baseline gap-1">
+                <span class="text-3xl font-extrabold tracking-tight text-emerald-300">1.50%</span>
+                <span class="text-xs text-slate-500">/ day</span>
+              </div>
+              <p class="mt-2 text-[10px] leading-5 text-slate-500">Unverified concept figure, not a promise.</p>
+            </div>
+
+            <div class="mt-5 space-y-3">
+              <div class="flex justify-between gap-3 text-xs">
+                <span class="text-slate-500">Minimum</span>
+                <span class="font-semibold text-white">$200</span>
+              </div>
+              <div class="flex justify-between gap-3 text-xs">
+                <span class="text-slate-500">Maximum</span>
+                <span class="font-semibold text-white">$1,999</span>
+              </div>
+              <div class="flex justify-between gap-3 text-xs">
+                <span class="text-slate-500">Term</span>
+                <span class="font-semibold text-white">30 days</span>
+              </div>
+            </div>
+
+            <div class="my-5 border-t border-white/[0.08]"></div>
+
+            <p class="text-xs font-semibold text-slate-300">Included features</p>
+            <ul class="mt-4 flex-1 space-y-3">
+              <li class="flex gap-2.5 text-xs leading-5 text-slate-400"><span class="check-icon"><i data-lucide="check" class="h-3 w-3"></i></span>Automated profit distribution*</li>
+              <li class="flex gap-2.5 text-xs leading-5 text-slate-400"><span class="check-icon"><i data-lucide="check" class="h-3 w-3"></i></span>Secure investor portal access*</li>
+              <li class="flex gap-2.5 text-xs leading-5 text-slate-400"><span class="check-icon"><i data-lucide="check" class="h-3 w-3"></i></span>24/7 support availability*</li>
+            </ul>
+
+            <button type="button" class="get-started primary-btn mt-7 inline-flex w-full items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-bold">
+              Get Started <i data-lucide="arrow-right" class="h-4 w-4"></i>
+            </button>
+          </article>
+
+          <!-- COMPOUNDING -->
+          <article class="plan-card popular glass reveal rounded-2xl p-5 sm:p-6"
+                   data-plan="Compounding"
+                   data-rate="0.38"
+                   data-min="500"
+                   data-max="5000000"
+                   data-term="120 days">
+            <div class="mb-4 flex items-center justify-center gap-2 rounded-lg px-3 py-2 text-[10px] font-extrabold uppercase tracking-wider plan-badge">
+              <i data-lucide="star" class="h-3.5 w-3.5"></i>
+              Most Popular
+            </div>
+
+            <div class="flex items-start justify-between gap-3">
+              <span class="icon-tile flex h-11 w-11 items-center justify-center rounded-xl text-emerald-300">
+                <i data-lucide="repeat-2" class="h-5 w-5"></i>
+              </span>
+              <span class="rounded-full border border-emerald-400/20 px-2.5 py-1 text-[10px] font-semibold text-emerald-300">LONG-TERM</span>
+            </div>
+
+            <h3 class="mt-5 text-xl font-bold text-white">Compounding</h3>
+            <p class="mt-1 text-xs leading-5 text-slate-400">A longer proposed investment term.</p>
+
+            <div class="mt-6 rounded-xl border border-emerald-400/15 bg-emerald-400/[0.045] p-4">
+              <p class="text-[10px] font-semibold uppercase tracking-wider text-slate-500">Supplied daily rate*</p>
+              <div class="mt-2 flex items-baseline gap-1">
+                <span class="text-3xl font-extrabold tracking-tight text-emerald-300">0.38%</span>
+                <span class="text-xs text-slate-500">/ day</span>
+              </div>
+              <p class="mt-2 text-[10px] leading-5 text-slate-500">Unverified concept figure, not a promise.</p>
+            </div>
+
+            <div class="mt-5 space-y-3">
+              <div class="flex justify-between gap-3 text-xs">
+                <span class="text-slate-500">Minimum</span>
+                <span class="font-semibold text-white">$500</span>
+              </div>
+              <div class="flex justify-between gap-3 text-xs">
+                <span class="text-slate-500">Maximum</span>
+                <span class="font-semibold text-white">$5,000,000</span>
+              </div>
+              <div class="flex justify-between gap-3 text-xs">
+                <span class="text-slate-500">Term</span>
+                <span class="font-semibold text-white">120 days</span>
+              </div>
+            </div>
+
+            <div class="my-5 border-t border-white/[0.08]"></div>
+
+            <p class="text-xs font-semibold text-slate-300">Included features</p>
+            <ul class="mt-4 flex-1 space-y-3">
+              <li class="flex gap-2.5 text-xs leading-5 text-slate-400"><span class="check-icon"><i data-lucide="check" class="h-3 w-3"></i></span>Automated profit distribution*</li>
+              <li class="flex gap-2.5 text-xs leading-5 text-slate-400"><span class="check-icon"><i data-lucide="check" class="h-3 w-3"></i></span>Secure investor portal access*</li>
+              <li class="flex gap-2.5 text-xs leading-5 text-slate-400"><span class="check-icon"><i data-lucide="check" class="h-3 w-3"></i></span>24/7 support availability*</li>
+            </ul>
+
+            <button type="button" class="get-started primary-btn mt-7 inline-flex w-full items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-bold">
+              Get Started <i data-lucide="arrow-right" class="h-4 w-4"></i>
+            </button>
+          </article>
+
+          <!-- SILVER -->
+          <article class="plan-card glass reveal rounded-2xl p-5 sm:p-6"
+                   data-plan="Silver"
+                   data-rate="1.80"
+                   data-min="2000"
+                   data-max="9999"
+                   data-term="30 days">
+            <div class="flex items-start justify-between gap-3">
+              <span class="icon-tile flex h-11 w-11 items-center justify-center rounded-xl text-emerald-300">
+                <i data-lucide="medal" class="h-5 w-5"></i>
+              </span>
+              <span class="rounded-full border border-white/10 px-2.5 py-1 text-[10px] font-semibold text-slate-400">SILVER</span>
+            </div>
+
+            <h3 class="mt-5 text-xl font-bold text-white">Silver</h3>
+            <p class="mt-1 text-xs leading-5 text-slate-400">A higher proposed entry tier.</p>
+
+            <div class="mt-6 rounded-xl border border-white/[0.07] bg-[#0b0f19]/70 p-4">
+              <p class="text-[10px] font-semibold uppercase tracking-wider text-slate-500">Supplied daily rate*</p>
+              <div class="mt-2 flex items-baseline gap-1">
+                <span class="text-3xl font-extrabold tracking-tight text-emerald-300">1.80%</span>
+                <span class="text-xs text-slate-500">/ day</span>
+              </div>
+              <p class="mt-2 text-[10px] leading-5 text-slate-500">Unverified concept figure, not a promise.</p>
+            </div>
+
+            <div class="mt-5 space-y-3">
+              <div class="flex justify-between gap-3 text-xs"><span class="text-slate-500">Minimum</span><span class="font-semibold text-white">$2,000</span></div>
+              <div class="flex justify-between gap-3 text-xs"><span class="text-slate-500">Maximum</span><span class="font-semibold text-white">$9,999</span></div>
+              <div class="flex justify-between gap-3 text-xs"><span class="text-slate-500">Term</span><span class="font-semibold text-white">30 days</span></div>
+            </div>
+
+            <div class="my-5 border-t border-white/[0.08]"></div>
+            <p class="text-xs font-semibold text-slate-300">Included features</p>
+            <ul class="mt-4 flex-1 space-y-3">
+              <li class="flex gap-2.5 text-xs leading-5 text-slate-400"><span class="check-icon"><i data-lucide="check" class="h-3 w-3"></i></span>Automated profit distribution*</li>
+              <li class="flex gap-2.5 text-xs leading-5 text-slate-400"><span class="check-icon"><i data-lucide="check" class="h-3 w-3"></i></span>Secure investor portal access*</li>
+              <li class="flex gap-2.5 text-xs leading-5 text-slate-400"><span class="check-icon"><i data-lucide="check" class="h-3 w-3"></i></span>24/7 support availability*</li>
+            </ul>
+
+            <button type="button" class="get-started primary-btn mt-7 inline-flex w-full items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-bold">
+              Get Started <i data-lucide="arrow-right" class="h-4 w-4"></i>
+            </button>
+          </article>
+
+          <!-- DIAMOND -->
+          <article class="plan-card glass reveal rounded-2xl p-5 sm:p-6"
+                   data-plan="Diamond"
+                   data-rate="2.10"
+                   data-min="10000"
+                   data-max="49999"
+                   data-term="30 days">
+            <div class="flex items-start justify-between gap-3">
+              <span class="icon-tile flex h-11 w-11 items-center justify-center rounded-xl text-emerald-300">
+                <i data-lucide="gem" class="h-5 w-5"></i>
+              </span>
+              <span class="rounded-full border border-white/10 px-2.5 py-1 text-[10px] font-semibold text-slate-400">DIAMOND</span>
+            </div>
+
+            <h3 class="mt-5 text-xl font-bold text-white">Diamond</h3>
+            <p class="mt-1 text-xs leading-5 text-slate-400">A premium proposed investment tier.</p>
+
+            <div class="mt-6 rounded-xl border border-white/[0.07] bg-[#0b0f19]/70 p-4">
+              <p class="text-[10px] font-semibold uppercase tracking-wider text-slate-500">Supplied daily rate*</p>
+              <div class="mt-2 flex items-baseline gap-1">
+                <span class="text-3xl font-extrabold tracking-tight text-emerald-300">2.10%</span>
+                <span class="text-xs text-slate-500">/ day</span>
+              </div>
+              <p class="mt-2 text-[10px] leading-5 text-slate-500">Unverified concept figure, not a promise.</p>
+            </div>
+
+            <div class="mt-5 space-y-3">
+              <div class="flex justify-between gap-3 text-xs"><span class="text-slate-500">Minimum</span><span class="font-semibold text-white">$10,000</span></div>
+              <div class="flex justify-between gap-3 text-xs"><span class="text-slate-500">Maximum</span><span class="font-semibold text-white">$49,999</span></div>
+              <div class="flex justify-between gap-3 text-xs"><span class="text-slate-500">Term</span><span class="font-semibold text-white">30 days</span></div>
+            </div>
+
+            <div class="my-5 border-t border-white/[0.08]"></div>
+            <p class="text-xs font-semibold text-slate-300">Included features</p>
+            <ul class="mt-4 flex-1 space-y-3">
+              <li class="flex gap-2.5 text-xs leading-5 text-slate-400"><span class="check-icon"><i data-lucide="check" class="h-3 w-3"></i></span>Automated profit distribution*</li>
+              <li class="flex gap-2.5 text-xs leading-5 text-slate-400"><span class="check-icon"><i data-lucide="check" class="h-3 w-3"></i></span>Secure investor portal access*</li>
+              <li class="flex gap-2.5 text-xs leading-5 text-slate-400"><span class="check-icon"><i data-lucide="check" class="h-3 w-3"></i></span>24/7 support availability*</li>
+            </ul>
+
+            <button type="button" class="get-started primary-btn mt-7 inline-flex w-full items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-bold">
+              Get Started <i data-lucide="arrow-right" class="h-4 w-4"></i>
+            </button>
+          </article>
+
+          <!-- PREMIUM -->
+          <article class="plan-card glass reveal rounded-2xl p-5 sm:p-6"
+                   data-plan="Premium"
+                   data-rate="2.60"
+                   data-min="50000"
+                   data-max="99999"
+                   data-term="30 days">
+            <div class="flex items-start justify-between gap-3">
+              <span class="icon-tile flex h-11 w-11 items-center justify-center rounded-xl text-emerald-300">
+                <i data-lucide="crown" class="h-5 w-5"></i>
+              </span>
+              <span class="rounded-full border border-white/10 px-2.5 py-1 text-[10px] font-semibold text-slate-400">PREMIUM</span>
+            </div>
+
+            <h3 class="mt-5 text-xl font-bold text-white">Premium</h3>
+            <p class="mt-1 text-xs leading-5 text-slate-400">A higher proposed capital tier.</p>
+
+            <div class="mt-6 rounded-xl border border-white/[0.07] bg-[#0b0f19]/70 p-4">
+              <p class="text-[10px] font-semibold uppercase tracking-wider text-slate-500">Supplied daily rate*</p>
+              <div class="mt-2 flex items-baseline gap-1">
+                <span class="text-3xl font-extrabold tracking-tight text-emerald-300">2.60%</span>
+                <span class="text-xs text-slate-500">/ day</span>
+              </div>
+              <p class="mt-2 text-[10px] leading-5 text-slate-500">Unverified concept figure, not a promise.</p>
+            </div>
+
+            <div class="mt-5 space-y-3">
+              <div class="flex justify-between gap-3 text-xs"><span class="text-slate-500">Minimum</span><span class="font-semibold text-white">$50,000</span></div>
+              <div class="flex justify-between gap-3 text-xs"><span class="text-slate-500">Maximum</span><span class="font-semibold text-white">$99,999</span></div>
+              <div class="flex justify-between gap-3 text-xs"><span class="text-slate-500">Term</span><span class="font-semibold text-white">30 days</span></div>
+            </div>
+
+            <div class="my-5 border-t border-white/[0.08]"></div>
+            <p class="text-xs font-semibold text-slate-300">Included features</p>
+            <ul class="mt-4 flex-1 space-y-3">
+              <li class="flex gap-2.5 text-xs leading-5 text-slate-400"><span class="check-icon"><i data-lucide="check" class="h-3 w-3"></i></span>Automated profit distribution*</li>
+              <li class="flex gap-2.5 text-xs leading-5 text-slate-400"><span class="check-icon"><i data-lucide="check" class="h-3 w-3"></i></span>Secure investor portal access*</li>
+              <li class="flex gap-2.5 text-xs leading-5 text-slate-400"><span class="check-icon"><i data-lucide="check" class="h-3 w-3"></i></span>24/7 support availability*</li>
+            </ul>
+
+            <button type="button" class="get-started primary-btn mt-7 inline-flex w-full items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-bold">
+              Get Started <i data-lucide="arrow-right" class="h-4 w-4"></i>
+            </button>
+          </article>
+
+          <!-- EXCLUSIVE -->
+          <article class="plan-card glass reveal rounded-2xl p-5 sm:p-6"
+                   data-plan="Exclusive"
+                   data-rate="3.00"
+                   data-min="100000"
+                   data-max="499999"
+                   data-term="30 days">
+            <div class="flex items-start justify-between gap-3">
+              <span class="icon-tile flex h-11 w-11 items-center justify-center rounded-xl text-emerald-300">
+                <i data-lucide="badge-check" class="h-5 w-5"></i>
+              </span>
+              <span class="rounded-full border border-white/10 px-2.5 py-1 text-[10px] font-semibold text-slate-400">EXCLUSIVE</span>
+            </div>
+
+            <h3 class="mt-5 text-xl font-bold text-white">Exclusive</h3>
+            <p class="mt-1 text-xs leading-5 text-slate-400">A proposed high-capital tier.</p>
+
+            <div class="mt-6 rounded-xl border border-white/[0.07] bg-[#0b0f19]/70 p-4">
+              <p class="text-[10px] font-semibold uppercase tracking-wider text-slate-500">Supplied daily rate*</p>
+              <div class="mt-2 flex items-baseline gap-1">
+                <span class="text-3xl font-extrabold tracking-tight text-emerald-300">3.00%</span>
+                <span class="text-xs text-slate-500">/ day</span>
+              </div>
+              <p class="mt-2 text-[10px] leading-5 text-slate-500">Unverified concept figure, not a promise.</p>
+            </div>
+
+            <div class="mt-5 space-y-3">
+              <div class="flex justify-between gap-3 text-xs"><span class="text-slate-500">Minimum</span><span class="font-semibold text-white">$100,000</span></div>
+              <div class="flex justify-between gap-3 text-xs"><span class="text-slate-500">Maximum</span><span class="font-semibold text-white">$499,999</span></div>
+              <div class="flex justify-between gap-3 text-xs"><span class="text-slate-500">Term</span><span class="font-semibold text-white">30 days</span></div>
+            </div>
+
+            <div class="my-5 border-t border-white/[0.08]"></div>
+            <p class="text-xs font-semibold text-slate-300">Included features</p>
+            <ul class="mt-4 flex-1 space-y-3">
+              <li class="flex gap-2.5 text-xs leading-5 text-slate-400"><span class="check-icon"><i data-lucide="check" class="h-3 w-3"></i></span>Automated profit distribution*</li>
+              <li class="flex gap-2.5 text-xs leading-5 text-slate-400"><span class="check-icon"><i data-lucide="check" class="h-3 w-3"></i></span>Secure investor portal access*</li>
+              <li class="flex gap-2.5 text-xs leading-5 text-slate-400"><span class="check-icon"><i data-lucide="check" class="h-3 w-3"></i></span>24/7 support availability*</li>
+            </ul>
+
+            <button type="button" class="get-started primary-btn mt-7 inline-flex w-full items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-bold">
+              Get Started <i data-lucide="arrow-right" class="h-4 w-4"></i>
+            </button>
+          </article>
+
+          <!-- VIP -->
+          <article class="plan-card glass reveal rounded-2xl p-5 sm:p-6"
+                   data-plan="VIP"
+                   data-rate="3.60"
+                   data-min="500000"
+                   data-max="999999"
+                   data-term="30 days">
+            <div class="flex items-start justify-between gap-3">
+              <span class="icon-tile flex h-11 w-11 items-center justify-center rounded-xl text-emerald-300">
+                <i data-lucide="gem" class="h-5 w-5"></i>
+              </span>
+              <span class="rounded-full border border-white/10 px-2.5 py-1 text-[10px] font-semibold text-slate-400">VIP</span>
+            </div>
+
+            <h3 class="mt-5 text-xl font-bold text-white">VIP</h3>
+            <p class="mt-1 text-xs leading-5 text-slate-400">A proposed top-level capital tier.</p>
+
+            <div class="mt-6 rounded-xl border border-white/[0.07] bg-[#0b0f19]/70 p-4">
+              <p class="text-[10px] font-semibold uppercase tracking-wider text-slate-500">Supplied daily rate*</p>
+              <div class="mt-2 flex items-baseline gap-1">
+                <span class="text-3xl font-extrabold tracking-tight text-emerald-300">3.60%</span>
+                <span class="text-xs text-slate-500">/ day</span>
+              </div>
+              <p class="mt-2 text-[10px] leading-5 text-slate-500">Unverified concept figure, not a promise.</p>
+            </div>
+
+            <div class="mt-5 space-y-3">
+              <div class="flex justify-between gap-3 text-xs"><span class="text-slate-500">Minimum</span><span class="font-semibold text-white">$500,000</span></div>
+              <div class="flex justify-between gap-3 text-xs"><span class="text-slate-500">Maximum</span><span class="font-semibold text-white">$999,999</span></div>
+              <div class="flex justify-between gap-3 text-xs"><span class="text-slate-500">Term</span><span class="font-semibold text-white">30 days</span></div>
+            </div>
+
+            <div class="my-5 border-t border-white/[0.08]"></div>
+            <p class="text-xs font-semibold text-slate-300">Included features</p>
+            <ul class="mt-4 flex-1 space-y-3">
+              <li class="flex gap-2.5 text-xs leading-5 text-slate-400"><span class="check-icon"><i data-lucide="check" class="h-3 w-3"></i></span>Automated profit distribution*</li>
+              <li class="flex gap-2.5 text-xs leading-5 text-slate-400"><span class="check-icon"><i data-lucide="check" class="h-3 w-3"></i></span>Secure investor portal access*</li>
+              <li class="flex gap-2.5 text-xs leading-5 text-slate-400"><span class="check-icon"><i data-lucide="check" class="h-3 w-3"></i></span>24/7 support availability*</li>
+            </ul>
+
+            <button type="button" class="get-started primary-btn mt-7 inline-flex w-full items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-bold">
+              Get Started <i data-lucide="arrow-right" class="h-4 w-4"></i>
+            </button>
+          </article>
+
+          <!-- SHARES -->
+          <article class="plan-card glass reveal rounded-2xl p-5 sm:p-6"
+                   data-plan="Shares"
+                   data-rate="4.00"
+                   data-min="1000000"
+                   data-max="999999999"
+                   data-term="30 days">
+            <div class="flex items-start justify-between gap-3">
+              <span class="icon-tile flex h-11 w-11 items-center justify-center rounded-xl text-emerald-300">
+                <i data-lucide="chart-no-axes-combined" class="h-5 w-5"></i>
+              </span>
+              <span class="rounded-full border border-white/10 px-2.5 py-1 text-[10px] font-semibold text-slate-400">SHARES</span>
+            </div>
+
+            <h3 class="mt-5 text-xl font-bold text-white">Shares</h3>
+            <p class="mt-1 text-xs leading-5 text-slate-400">A proposed large-scale tier.</p>
+
+            <div class="mt-6 rounded-xl border border-white/[0.07] bg-[#0b0f19]/70 p-4">
+              <p class="text-[10px] font-semibold uppercase tracking-wider text-slate-500">Supplied daily rate*</p>
+              <div class="mt-2 flex items-baseline gap-1">
+                <span class="text-3xl font-extrabold tracking-tight text-emerald-300">4.00%</span>
+                <span class="text-xs text-slate-500">/ day</span>
+              </div>
+              <p class="mt-2 text-[10px] leading-5 text-slate-500">Unverified concept figure, not a promise.</p>
+            </div>
+
+            <div class="mt-5 space-y-3">
+              <div class="flex justify-between gap-3 text-xs"><span class="text-slate-500">Minimum</span><span class="font-semibold text-white">$1,000,000</span></div>
+              <div class="flex justify-between gap-3 text-xs"><span class="text-slate-500">Maximum</span><span class="font-semibold text-white">$999,999,999</span></div>
+              <div class="flex justify-between gap-3 text-xs"><span class="text-slate-500">Term</span><span class="font-semibold text-white">30 days</span></div>
+            </div>
+
+            <div class="my-5 border-t border-white/[0.08]"></div>
+            <p class="text-xs font-semibold text-slate-300">Included features</p>
+            <ul class="mt-4 flex-1 space-y-3">
+              <li class="flex gap-2.5 text-xs leading-5 text-slate-400"><span class="check-icon"><i data-lucide="check" class="h-3 w-3"></i></span>Automated profit distribution*</li>
+              <li class="flex gap-2.5 text-xs leading-5 text-slate-400"><span class="check-icon"><i data-lucide="check" class="h-3 w-3"></i></span>Secure investor portal access*</li>
+              <li class="flex gap-2.5 text-xs leading-5 text-slate-400"><span class="check-icon"><i data-lucide="check" class="h-3 w-3"></i></span>24/7 support availability*</li>
+            </ul>
+
+            <button type="button" class="get-started primary-btn mt-7 inline-flex w-full items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-bold">
+              Get Started <i data-lucide="arrow-right" class="h-4 w-4"></i>
+            </button>
+          </article>
+
+        </div>
+
+        <p class="mt-7 text-xs leading-6 text-slate-500">
+          *Rates, ranges, terms, and feature descriptions are concept values
+          supplied for this design and have not been independently verified.
+          No return is guaranteed. Feature availability depends on the actual
+          product and operating arrangements. Obtain independent advice and
+          review the governing documents before making an investment.
+        </p>
+      </div>
+    </section>
+
+    <!-- =========================================
+         VALUE PROPOSITION / PLATFORM FEATURES
+    ========================================== -->
+    <section class="border-y border-white/[0.06] bg-[#0e1420] px-5 py-20 sm:px-8 sm:py-24 lg:px-10">
+      <div class="mx-auto max-w-7xl">
+        <div class="reveal mx-auto max-w-3xl text-center">
+          <span class="text-xs font-bold uppercase tracking-[.22em] text-emerald-400">The platform experience</span>
+          <h2 class="mt-4 text-3xl font-bold tracking-tight text-white sm:text-4xl">
+            Trust is built on <span class="mint-text">what you can verify.</span>
+          </h2>
+          <p class="mt-4 text-sm leading-7 text-slate-400 sm:text-base">
+            Clear policies and verifiable security practices matter more than
+            marketing claims. These are the platform standards DaiFinance
+            should document and maintain before launch.
+          </p>
+        </div>
+
+        <div class="mt-12 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
+
+          <article class="glass reveal rounded-2xl p-6">
+            <span class="trust-icon flex h-12 w-12 items-center justify-center rounded-xl">
+              <i data-lucide="shield-check" class="h-6 w-6"></i>
+            </span>
+            <h3 class="mt-5 text-base font-bold text-white">AES-256 Encryption</h3>
+            <p class="mt-3 text-sm leading-6 text-slate-400">
+              Document encryption at rest and in transit, key management,
+              access restrictions, and independent security testing.
+            </p>
+            <span class="mt-5 inline-flex items-center gap-2 text-xs font-semibold text-amber-300">
+              <i data-lucide="clipboard-check" class="h-4 w-4"></i>
+              Verify implementation
+            </span>
+          </article>
+
+          <article class="glass reveal rounded-2xl p-6">
+            <span class="trust-icon flex h-12 w-12 items-center justify-center rounded-xl">
+              <i data-lucide="receipt-text" class="h-6 w-6"></i>
+            </span>
+            <h3 class="mt-5 text-base font-bold text-white">Transparent Fees</h3>
+            <p class="mt-3 text-sm leading-6 text-slate-400">
+              Publish applicable management fees, transaction costs,
+              withdrawal charges, and other conditions before commitment.
+            </p>
+            <span class="mt-5 inline-flex items-center gap-2 text-xs font-semibold text-emerald-300">
+              <i data-lucide="check-circle-2" class="h-4 w-4"></i>
+              Clear terms
+            </span>
+          </article>
+
+          <article class="glass reveal rounded-2xl p-6">
+            <span class="trust-icon flex h-12 w-12 items-center justify-center rounded-xl">
+              <i data-lucide="clock-3" class="h-6 w-6"></i>
+            </span>
+            <h3 class="mt-5 text-base font-bold text-white">Withdrawal Processing</h3>
+            <p class="mt-3 text-sm leading-6 text-slate-400">
+              Explain processing timelines, settlement requirements,
+              verification checks, and any applicable withdrawal restrictions.
+            </p>
+            <span class="mt-5 inline-flex items-center gap-2 text-xs font-semibold text-emerald-300">
+              <i data-lucide="file-text" class="h-4 w-4"></i>
+              Published timelines
+            </span>
+          </article>
+
+          <article class="glass reveal rounded-2xl p-6">
+            <span class="trust-icon flex h-12 w-12 items-center justify-center rounded-xl">
+              <i data-lucide="headset" class="h-6 w-6"></i>
+            </span>
+            <h3 class="mt-5 text-base font-bold text-white">Support Access</h3>
+            <p class="mt-3 text-sm leading-6 text-slate-400">
+              Make support channels, service hours, response expectations,
+              and escalation procedures easy for customers to find.
+            </p>
+            <a href="contact.html" class="mt-5 inline-flex items-center gap-2 text-xs font-semibold text-emerald-300 hover:text-emerald-200">
+              Contact Support <i data-lucide="arrow-up-right" class="h-4 w-4"></i>
+            </a>
+          </article>
+
+        </div>
+
+        <div class="mt-6 rounded-xl border border-white/[0.07] bg-white/[0.02] p-4 sm:p-5">
+          <p class="text-xs leading-6 text-slate-500">
+            Security, insurance, custody, regulatory, and support statements
+            must describe actual, verifiable arrangements. Encryption does not
+            eliminate investment risk, and no particular security standard
+            guarantees that funds or investments are protected against loss.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================
+         FAQ
+    ========================================== -->
+    <section class="px-5 py-20 sm:px-8 sm:py-24 lg:px-10">
+      <div class="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[.75fr_1.25fr]">
+
+        <div class="reveal">
+          <span class="text-xs font-bold uppercase tracking-[.22em] text-emerald-400">Need clarity?</span>
+          <h2 class="mt-4 text-3xl font-bold tracking-tight text-white sm:text-4xl">
+            Questions before you choose?
+          </h2>
+          <p class="mt-4 text-sm leading-7 text-slate-400">
+            Make sure you understand the terms, fees, and potential downsides
+            before committing money.
+          </p>
+          <a href="faq.html" class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-emerald-300 hover:text-emerald-200">
+            Visit our FAQ <i data-lucide="arrow-right" class="h-4 w-4"></i>
+          </a>
+        </div>
+
+        <div class="reveal space-y-3">
+          <details class="group rounded-xl border border-white/[0.08] bg-white/[0.02] p-5">
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 text-sm font-semibold text-white">
+              Are the daily returns guaranteed?
+              <i data-lucide="plus" class="h-4 w-4 shrink-0 text-emerald-300 transition group-open:rotate-45"></i>
+            </summary>
+            <p class="mt-4 text-sm leading-7 text-slate-400">
+              No. The rates displayed on this concept page are unverified
+              figures supplied for the design. They must not be interpreted
+              as actual or guaranteed earnings. Investment values can decline,
+              and you may lose some or all of your principal.
+            </p>
+          </details>
+
+          <details class="group rounded-xl border border-white/[0.08] bg-white/[0.02] p-5">
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 text-sm font-semibold text-white">
+              How do I choose a plan?
+              <i data-lucide="plus" class="h-4 w-4 shrink-0 text-emerald-300 transition group-open:rotate-45"></i>
+            </summary>
+            <p class="mt-4 text-sm leading-7 text-slate-400">
+              Compare the minimum investment, maximum investment, term,
+              liquidity restrictions, fees, and risk information. Do not select
+              a tier solely because it advertises a higher rate.
+            </p>
+          </details>
+
+          <details class="group rounded-xl border border-white/[0.08] bg-white/[0.02] p-5">
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 text-sm font-semibold text-white">
+              Can I withdraw my money at any time?
+              <i data-lucide="plus" class="h-4 w-4 shrink-0 text-emerald-300 transition group-open:rotate-45"></i>
+            </summary>
+            <p class="mt-4 text-sm leading-7 text-slate-400">
+              Withdrawal eligibility depends on the actual product terms.
+              Check the lock-up period, settlement time, withdrawal fees,
+              and any restrictions before making a commitment.
+            </p>
+          </details>
+
+          <details class="group rounded-xl border border-white/[0.08] bg-white/[0.02] p-5">
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 text-sm font-semibold text-white">
+              What happens when I click Get Started?
+              <i data-lucide="plus" class="h-4 w-4 shrink-0 text-emerald-300 transition group-open:rotate-45"></i>
+            </summary>
+            <p class="mt-4 text-sm leading-7 text-slate-400">
+              This demo opens a plan review dialog so you can inspect the
+              proposed terms and enter an amount. It does not accept payment,
+              create an investment, or execute a transaction.
+            </p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================
+         CTA
+    ========================================== -->
+    <section class="px-5 pb-20 sm:px-8 sm:pb-24 lg:px-10">
+      <div class="reveal relative mx-auto max-w-7xl overflow-hidden rounded-3xl border border-emerald-400/20 bg-gradient-to-br from-emerald-400/[0.12] via-[#111827] to-[#111827] px-6 py-12 sm:px-10 sm:py-16 lg:px-16">
+        <div class="pointer-events-none absolute -right-20 -top-32 h-80 w-80 rounded-full bg-emerald-400/[0.08] blur-3xl"></div>
+
+        <div class="relative flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-center">
+          <div class="max-w-2xl">
+            <span class="text-xs font-bold uppercase tracking-[.22em] text-emerald-300">Make an informed choice</span>
+            <h2 class="mt-4 text-3xl font-bold leading-tight tracking-tight text-white sm:text-4xl">
+              Your financial future deserves a thoughtful plan.
+            </h2>
+            <p class="mt-4 text-sm leading-7 text-slate-400 sm:text-base">
+              Have questions about the proposed terms or need clarification?
+              Contact our team before making a financial commitment.
+            </p>
+          </div>
+
+          <div class="flex w-full shrink-0 flex-col gap-3 sm:w-auto sm:flex-row lg:flex-col">
+            <a href="contact.html" class="primary-btn inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3.5 text-sm font-bold">
+              Contact Our Team <i data-lucide="arrow-right" class="h-4 w-4"></i>
+            </a>
+            <a href="services.html" class="secondary-btn inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3.5 text-sm font-semibold text-slate-200">
+              Explore Services <i data-lucide="arrow-up-right" class="h-4 w-4"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =========================================
+       PLAN REVIEW MODAL
+       Demo interaction only: no payments or trades.
+  ========================================== -->
+  <div id="plan-modal"
+       class="modal-backdrop fixed inset-0 z-[60] hidden items-center justify-center overflow-y-auto p-4"
+       role="dialog"
+       aria-modal="true"
+       aria-labelledby="modal-title"
+       aria-describedby="modal-description">
+
+    <div class="modal-panel glass w-full max-w-lg rounded-2xl p-6 shadow-2xl sm:p-8">
+
+      <div class="flex items-start justify-between gap-4">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-[.2em] text-emerald-400">Plan review</span>
+          <h2 id="modal-title" class="mt-2 text-2xl font-bold text-white">Review your selection</h2>
+        </div>
+        <button id="close-modal"
+                type="button"
+                class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-white/10 text-slate-300 hover:bg-white/5"
+                aria-label="Close plan review">
+          <i data-lucide="x" class="h-5 w-5"></i>
+        </button>
+      </div>
+
+      <p id="modal-description" class="mt-3 text-sm leading-6 text-slate-400">
+        Review the proposed tier and investment range. This demonstration does not execute a transaction.
+      </p>
+
+      <div class="mt-6 rounded-xl border border-white/[0.08] bg-[#0b0f19]/75 p-5">
+        <div class="flex items-center justify-between gap-3">
+          <span class="text-sm text-slate-400">Selected plan</span>
+          <span id="modal-plan-name" class="text-sm font-bold text-white">Basic</span>
+        </div>
+        <div class="mt-4 flex items-center justify-between gap-3">
+          <span class="text-sm text-slate-400">Supplied daily rate*</span>
+          <span id="modal-plan-rate" class="text-sm font-bold text-emerald-300">1.50%</span>
+        </div>
+        <div class="mt-4 flex items-center justify-between gap-3">
+          <span class="text-sm text-slate-400">Proposed term</span>
+          <span id="modal-plan-term" class="text-sm font-bold text-white">30 days</span>
+        </div>
+        <div class="mt-4 flex items-center justify-between gap-3">
+          <span class="text-sm text-slate-400">Permitted range</span>
+          <span id="modal-plan-range" class="text-right text-sm font-bold text-white">$200 – $1,999</span>
+        </div>
+      </div>
+
+      <form id="plan-review-form" class="mt-6">
+        <label for="investment-amount" class="block text-sm font-semibold text-slate-200">
+          Illustrative investment amount (USD)
+        </label>
+        <div class="mt-2 flex overflow-hidden rounded-xl border border-white/10 bg-[#0b0f19] focus-within:border-emerald-400/50">
+          <span class="flex items-center border-r border-white/10 px-4 text-sm text-slate-400">$</span>
+          <input id="investment-amount"
+                 name="investmentAmount"
+                 type="number"
+                 min="200"
+                 max="1999"
+                 step="1"
+                 required
+                 inputmode="decimal"
+                 class="w-full bg-transparent px-4 py-3 text-sm text-white outline-none"
+                 placeholder="Enter an amount" />
+        </div>
+        <p id="amount-hint" class="mt-2 text-xs leading-5 text-slate-500"></p>
+        <p id="amount-error" class="mt-2 hidden text-xs leading-5 text-rose-300" role="alert"></p>
+
+        <div class="mt-5 rounded-xl border border-amber-400/15 bg-amber-400/[0.045] p-4">
+          <p class="text-xs leading-6 text-slate-400">
+            The displayed daily rate is unverified and is not a guaranteed
+            return. No funds will be collected by this form. Review the actual
+            product documents and applicable legal disclosures before investing.
+          </p>
+        </div>
+
+        <div class="mt-6 flex flex-col gap-3 sm:flex-row">
+          <button type="submit" class="primary-btn inline-flex flex-1 items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-bold">
+            Continue to Account Setup
+            <i data-lucide="arrow-right" class="h-4 w-4"></i>
+          </button>
+          <button id="cancel-modal" type="button" class="secondary-btn rounded-xl px-5 py-3 text-sm font-semibold text-slate-300">
+            Cancel
+          </button>
+        </div>
+
+        <p class="mt-4 text-[10px] leading-5 text-slate-500">
+          Continuing only passes the selected plan and amount to the account
+          registration page. It does not create an investment or transfer funds.
+        </p>
+      </form>
+    </div>
+  </div>
+
+  <!-- =========================================
+       FOOTER
+  ========================================== -->
+  <footer class="border-t border-white/[0.08] bg-[#090d15]">
+    <div class="mx-auto max-w-7xl px-5 py-14 sm:px-8 lg:px-10">
+
+      <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr]">
+
+        <div>
+          <a href="index.html" class="inline-flex items-center gap-2.5" aria-label="DaiFinance home">
+            <span class="flex h-9 w-9 items-center justify-center rounded-xl border border-emerald-400/20 bg-emerald-400/10 text-emerald-300">
+              <i data-lucide="chart-no-axes-combined" class="h-5 w-5"></i>
+            </span>
+            <span class="text-xl font-extrabold tracking-tight text-white">
+              DaiFinance<span class="text-emerald-400">.</span>
+            </span>
+          </a>
+
+          <p class="mt-5 max-w-sm text-sm leading-7 text-slate-400">
+            A modern wealth management concept focused on investment
+            education, clear information, and informed financial decisions.
+          </p>
+
+          <a href="contact.html" class="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-emerald-300 hover:text-emerald-200">
+            Get in touch <i data-lucide="arrow-up-right" class="h-4 w-4"></i>
+          </a>
+        </div>
+
+        <div>
+          <h2 class="text-sm font-bold text-white">Explore</h2>
+          <ul class="mt-5 space-y-3.5 text-sm text-slate-400">
+            <li><a href="index.html" class="hover:text-emerald-300">Home</a></li>
+            <li><a href="about.html" class="hover:text-emerald-300">About Us</a></li>
+            <li><a href="services.html" class="hover:text-emerald-300">Services</a></li>
+            <li><a href="investment-plans.html" class="hover:text-emerald-300">Investment Plans</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="text-sm font-bold text-white">Resources</h2>
+          <ul class="mt-5 space-y-3.5 text-sm text-slate-400">
+            <li><a href="faq.html" class="hover:text-emerald-300">Frequently Asked Questions</a></li>
+            <li><a href="contact.html" class="hover:text-emerald-300">Contact Support</a></li>
+            <li><a href="privacy-policy.html" class="hover:text-emerald-300">Privacy Policy</a></li>
+            <li><a href="terms.html" class="hover:text-emerald-300">Terms &amp; Conditions</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="text-sm font-bold text-white">Your Account</h2>
+          <ul class="mt-5 space-y-3.5 text-sm text-slate-400">
+            <li><a href="login.html" class="hover:text-emerald-300">Sign In</a></li>
+            <li><a href="register.html" class="hover:text-emerald-300">Create Account</a></li>
+            <li><a href="investment-plans.html" class="hover:text-emerald-300">Compare Plans</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mt-12 border-t border-white/[0.07] pt-7">
+        <p class="mb-5 text-xs leading-6 text-slate-500">
+          <strong class="text-slate-400">Investment risk disclosure:</strong>
+          Investments can lose value, including the entire principal. Target
+          rates and historical performance do not guarantee future results.
+          All figures on this concept page require verification. Confirm the
+          operating entity, regulatory status, custody arrangements, applicable
+          protections, withdrawal terms, and all fees before investing.
+        </p>
+
+        <div class="flex flex-col gap-4 text-xs text-slate-500 sm:flex-row sm:items-center sm:justify-between">
+          <p>&copy; <span id="current-year"></span> DaiFinance. All rights reserved.</p>
+          <div class="flex flex-wrap gap-x-5 gap-y-2">
+            <a href="privacy-policy.html" class="hover:text-slate-300">Privacy</a>
+            <a href="terms.html" class="hover:text-slate-300">Terms</a>
+            <a href="contact.html" class="hover:text-slate-300">Support</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =========================================
+       JAVASCRIPT
+  ========================================== -->
+  <script>
+    // Initialize Lucide icons.
+    if (window.lucide) {
+      lucide.createIcons();
+    }
+
+    // Current year.
+    document.getElementById("current-year").textContent =
+      new Date().getFullYear();
+
+    // Mobile navigation.
+    const menuButton = document.getElementById("mobile-menu-button");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    menuButton.addEventListener("click", () => {
+      const expanded = menuButton.getAttribute("aria-expanded") === "true";
+
+      menuButton.setAttribute("aria-expanded", String(!expanded));
+      menuButton.setAttribute(
+        "aria-label",
+        expanded ? "Open navigation menu" : "Close navigation menu"
+      );
+
+      mobileMenu.classList.toggle("hidden", expanded);
+
+      menuButton.innerHTML = expanded
+        ? '<i data-lucide="menu" class="h-5 w-5"></i>'
+        : '<i data-lucide="x" class="h-5 w-5"></i>';
+
+      if (window.lucide) lucide.createIcons();
+    });
+
+    mobileMenu.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        mobileMenu.classList.add("hidden");
+        menuButton.setAttribute("aria-expanded", "false");
+        menuButton.setAttribute("aria-label", "Open navigation menu");
+        menuButton.innerHTML = '<i data-lucide="menu" class="h-5 w-5"></i>';
+
+        if (window.lucide) lucide.createIcons();
+      });
+    });
+
+    // Scroll reveal with reduced-motion support.
+    const revealItems = document.querySelectorAll(".reveal");
+
+    if (
+      "IntersectionObserver" in window &&
+      !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      const observer = new IntersectionObserver((entries, currentObserver) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            currentObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08 });
+
+      revealItems.forEach(item => observer.observe(item));
+    } else {
+      revealItems.forEach(item => item.classList.add("visible"));
+    }
+
+    // Plan review modal.
+    const modal = document.getElementById("plan-modal");
+    const modalName = document.getElementById("modal-plan-name");
+    const modalRate = document.getElementById("modal-plan-rate");
+    const modalTerm = document.getElementById("modal-plan-term");
+    const modalRange = document.getElementById("modal-plan-range");
+    const amountInput = document.getElementById("investment-amount");
+    const amountHint = document.getElementById("amount-hint");
+    const amountError = document.getElementById("amount-error");
+    const reviewForm = document.getElementById("plan-review-form");
+
+    let selectedPlan = null;
+    let previousFocus = null;
+
+    const money = value => new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
+      maximumFractionDigits: 0
+    }).format(value);
+
+    function openPlanModal(card) {
+      previousFocus = document.activeElement;
+
+      selectedPlan = {
+        name: card.dataset.plan,
+        rate: Number(card.dataset.rate),
+        min: Number(card.dataset.min),
+        max: Number(card.dataset.max),
+        term: card.dataset.term
+      };
+
+      modalName.textContent = selectedPlan.name;
+      modalRate.textContent = selectedPlan.rate.toFixed(2) + "% per day*";
+      modalTerm.textContent = selectedPlan.term;
+      modalRange.textContent =
+        money(selectedPlan.min) + " – " + money(selectedPlan.max);
+
+      amountInput.min = String(selectedPlan.min);
+      amountInput.max = String(selectedPlan.max);
+      amountInput.step = "1";
+      amountInput.value = "";
+      amountInput.placeholder = money(selectedPlan.min).replace("$", "");
+      amountHint.textContent =
+        "Enter an amount from " + money(selectedPlan.min) +
+        " to " + money(selectedPlan.max) + ". This is a demo selection only.";
+      amountError.textContent = "";
+      amountError.classList.add("hidden");
+
+      modal.classList.remove("hidden");
+      modal.classList.add("flex");
+      document.body.style.overflow = "hidden";
+
+      amountInput.focus();
+    }
+
+    function closePlanModal() {
+      modal.classList.add("hidden");
+      modal.classList.remove("flex");
+      document.body.style.overflow = "";
+
+      if (previousFocus) previousFocus.focus();
+    }
+
+    document.querySelectorAll(".get-started").forEach(button => {
+      button.addEventListener("click", () => {
+        const card = button.closest("[data-plan]");
+        if (card) openPlanModal(card);
+      });
+    });
+
+    document.getElementById("close-modal")
+      .addEventListener("click", closePlanModal);
+
+    document.getElementById("cancel-modal")
+      .addEventListener("click", closePlanModal);
+
+    // Close when clicking outside the dialog panel.
+    modal.addEventListener("click", event => {
+      if (event.target === modal) closePlanModal();
+    });
+
+    // Escape key closes the modal.
+    document.addEventListener("keydown", event => {
+      if (event.key === "Escape" && !modal.classList.contains("hidden")) {
+        closePlanModal();
+      }
+    });
+
+    // Validate the proposed amount and pass the selection to the registration
+    // page. The destination is a placeholder and should be adapted to your app.
+    reviewForm.addEventListener("submit", event => {
+      event.preventDefault();
+
+      if (!selectedPlan) return;
+
+      const amount = Number(amountInput.value);
+
+      if (
+        !Number.isFinite(amount) ||
+        amount < selectedPlan.min ||
+        amount > selectedPlan.max
+      ) {
+        amountError.textContent =
+          "Enter a valid amount between " +
+          money(selectedPlan.min) + " and " +
+          money(selectedPlan.max) + ".";
+        amountError.classList.remove("hidden");
+        amountInput.focus();
+        return;
+      }
+
+      amountError.classList.add("hidden");
+
+      const params = new URLSearchParams({
+        plan: selectedPlan.name,
+        amount: String(amount)
+      });
+
+      // This passes the selection only. The server must validate all values
+      // again and must not treat query-string values as payment authorization.
+      window.location.href = "register.html?" + params.toString();
+    });
+  </script>
+
+</body>
+</html>

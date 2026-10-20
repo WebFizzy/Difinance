@@ -1,0 +1,1460 @@
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0b0f19" />
+
+  <title>Terms of Service | DaiFinance</title>
+  <meta
+    name="description"
+    content="Read the DaiFinance Terms of Service to understand the terms, responsibilities, risks, and conditions governing your use of our platform."
+  />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Inter font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink: "#0b0f19",
+            panel: "#111827",
+            emerald: {
+              400: "#34d399",
+              500: "#10b981",
+              600: "#059669"
+            }
+          },
+          fontFamily: {
+            sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"]
+          },
+          boxShadow: {
+            glow: "0 0 35px rgba(16, 185, 129, 0.12)",
+            card: "0 18px 60px rgba(0, 0, 0, 0.18)"
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    :root {
+      color-scheme: dark;
+      --background: #0b0f19;
+      --surface: #111827;
+      --border: rgba(148, 163, 184, 0.13);
+      --muted: #9ca3af;
+      --mint: #34d399;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 110px;
+    }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(
+          ellipse at 50% -15%,
+          rgba(16, 185, 129, 0.10),
+          transparent 48%
+        ),
+        var(--background);
+      color: #f3f4f6;
+      font-family: "Inter", system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection {
+      color: #052e24;
+      background: #34d399;
+    }
+
+    a {
+      transition: color 180ms ease, background-color 180ms ease,
+        border-color 180ms ease;
+    }
+
+    .glass {
+      background: rgba(17, 24, 39, 0.76);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    .hero-grid {
+      background-image:
+        linear-gradient(rgba(148, 163, 184, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(148, 163, 184, 0.035) 1px, transparent 1px);
+      background-size: 44px 44px;
+      mask-image: linear-gradient(to bottom, black, transparent 90%);
+      -webkit-mask-image: linear-gradient(to bottom, black, transparent 90%);
+    }
+
+    .legal-section {
+      scroll-margin-top: 112px;
+    }
+
+    .legal-section h2 {
+      letter-spacing: -0.035em;
+    }
+
+    .legal-section p,
+    .legal-section li {
+      color: #aab4c5;
+      font-size: 0.94rem;
+      line-height: 1.9;
+    }
+
+    .legal-section strong {
+      color: #e5e7eb;
+      font-weight: 600;
+    }
+
+    .legal-section ul {
+      list-style: none;
+      padding-left: 0;
+      margin-top: 1rem;
+      display: grid;
+      gap: 0.7rem;
+    }
+
+    .legal-section ul li {
+      position: relative;
+      padding-left: 1.25rem;
+    }
+
+    .legal-section ul li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.78rem;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #34d399;
+    }
+
+    .toc-link {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.68rem 0.75rem;
+      border: 1px solid transparent;
+      border-radius: 0.75rem;
+      color: #9ca3af;
+      font-size: 0.82rem;
+      line-height: 1.5;
+    }
+
+    .toc-link:hover,
+    .toc-link.active {
+      color: #d1fae5;
+      background: rgba(16, 185, 129, 0.08);
+      border-color: rgba(52, 211, 153, 0.13);
+    }
+
+    .toc-number {
+      min-width: 1.45rem;
+      color: #34d399;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding-top: 0.1rem;
+    }
+
+    .legal-divider {
+      border-color: rgba(148, 163, 184, 0.12);
+    }
+
+    .mint-link {
+      color: #6ee7b7;
+    }
+
+    .mint-link:hover {
+      color: #a7f3d0;
+    }
+
+    .mobile-menu[hidden] {
+      display: none;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="min-h-screen font-sans">
+
+  <!-- ==================== HEADER ==================== -->
+  <header class="sticky top-0 z-50 border-b border-white/[0.07] bg-[#0b0f19]/90 backdrop-blur-xl">
+    <nav
+      class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-8 lg:px-10"
+      aria-label="Main navigation"
+    >
+      <!-- Brand -->
+      <a href="index.html" class="flex shrink-0 items-center gap-2.5" aria-label="DaiFinance home">
+        <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-emerald-500/15 text-emerald-400 ring-1 ring-emerald-400/20">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="21"
+            height="21"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M3 3v18h18" />
+            <path d="m7 14 4-4 4 4 6-7" />
+          </svg>
+        </span>
+
+        <span class="text-xl font-extrabold tracking-tight text-white">
+          DaiFinance<span class="text-emerald-400">.</span>
+        </span>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden items-center gap-7 lg:flex">
+        <a href="about.html" class="text-sm font-medium text-gray-400 hover:text-white">
+          About Us
+        </a>
+        <a href="services.html" class="text-sm font-medium text-gray-400 hover:text-white">
+          Services
+        </a>
+        <a href="investment-plans.html" class="text-sm font-medium text-gray-400 hover:text-white">
+          Investment Plans
+        </a>
+        <a href="faq.html" class="text-sm font-medium text-gray-400 hover:text-white">
+          FAQ
+        </a>
+      </div>
+
+      <!-- Desktop Account Actions -->
+      <div class="hidden items-center gap-4 sm:flex">
+        <a
+          href="login.html"
+          class="text-sm font-semibold text-gray-300 hover:text-white"
+        >
+          Sign In
+        </a>
+        <a
+          href="register.html"
+          class="inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-500 px-4 py-2.5 text-sm font-bold text-[#052e24] shadow-lg shadow-emerald-500/10 hover:bg-emerald-400 focus:outline-none focus:ring-2 focus:ring-emerald-300 focus:ring-offset-2 focus:ring-offset-ink"
+        >
+          Create Account
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="15"
+            height="15"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M7 17 17 7" />
+            <path d="M7 7h10v10" />
+          </svg>
+        </a>
+      </div>
+
+      <!-- Mobile Menu Toggle -->
+      <button
+        id="menu-toggle"
+        type="button"
+        class="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 text-gray-200 hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-emerald-400 sm:hidden"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <svg
+          id="menu-open-icon"
+          xmlns="http://www.w3.org/2000/svg"
+          width="22"
+          height="22"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          aria-hidden="true"
+        >
+          <path d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+        <svg
+          id="menu-close-icon"
+          class="hidden"
+          xmlns="http://www.w3.org/2000/svg"
+          width="22"
+          height="22"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          aria-hidden="true"
+        >
+          <path d="m18 6-12 12M6 6l12 12" />
+        </svg>
+      </button>
+    </nav>
+
+    <!-- Mobile Navigation -->
+    <div
+      id="mobile-menu"
+      class="mobile-menu border-t border-white/[0.07] bg-[#0b0f19] px-5 py-5 sm:hidden"
+      hidden
+    >
+      <div class="mx-auto flex max-w-7xl flex-col gap-1">
+        <a href="about.html" class="rounded-lg px-3 py-3 text-sm text-gray-300 hover:bg-white/5 hover:text-white">
+          About Us
+        </a>
+        <a href="services.html" class="rounded-lg px-3 py-3 text-sm text-gray-300 hover:bg-white/5 hover:text-white">
+          Services
+        </a>
+        <a href="investment-plans.html" class="rounded-lg px-3 py-3 text-sm text-gray-300 hover:bg-white/5 hover:text-white">
+          Investment Plans
+        </a>
+        <a href="faq.html" class="rounded-lg px-3 py-3 text-sm text-gray-300 hover:bg-white/5 hover:text-white">
+          FAQ
+        </a>
+        <div class="my-3 border-t border-white/10"></div>
+        <a href="login.html" class="rounded-lg px-3 py-3 text-sm font-semibold text-gray-200 hover:bg-white/5">
+          Sign In
+        </a>
+        <a href="register.html" class="mt-2 inline-flex items-center justify-center rounded-xl bg-emerald-500 px-4 py-3 text-sm font-bold text-[#052e24] hover:bg-emerald-400">
+          Create Account
+        </a>
+      </div>
+    </div>
+  </header>
+
+
+  <main>
+
+    <!-- ==================== HERO ==================== -->
+    <section class="relative isolate overflow-hidden px-5 pb-16 pt-16 sm:px-8 sm:pb-20 sm:pt-24 lg:px-10 lg:pt-28">
+      <div class="hero-grid pointer-events-none absolute inset-0 -z-10"></div>
+
+      <div class="pointer-events-none absolute left-1/2 top-10 -z-10 h-72 w-72 -translate-x-1/2 rounded-full bg-emerald-500/[0.08] blur-[100px]"></div>
+
+      <div class="mx-auto max-w-5xl text-center">
+        <div class="mb-6 inline-flex items-center gap-2 rounded-full border border-emerald-400/20 bg-emerald-400/[0.07] px-3.5 py-2 text-xs font-semibold tracking-wide text-emerald-300">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="15"
+            height="15"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11z" />
+            <path d="m9 12 2 2 4-4" />
+          </svg>
+          LEGAL & TRANSPARENCY
+        </div>
+
+        <h1 class="text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
+          Terms of
+          <span class="bg-gradient-to-r from-emerald-300 to-emerald-500 bg-clip-text text-transparent">
+            Service
+          </span>
+        </h1>
+
+        <p class="mx-auto mt-6 max-w-2xl text-base leading-8 text-gray-400 sm:text-lg">
+          These terms explain the conditions for accessing and using DaiFinance,
+          your responsibilities as a user, and important information about the
+          nature and risks of our platform.
+        </p>
+
+        <div class="mt-8 flex flex-wrap items-center justify-center gap-x-5 gap-y-3 text-sm text-gray-500">
+          <span class="inline-flex items-center gap-2">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.7"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <rect x="3" y="4" width="18" height="18" rx="2" />
+              <path d="M16 2v4M8 2v4M3 10h18" />
+            </svg>
+            Last updated: October 20, 2026
+          </span>
+
+          <span class="hidden h-1 w-1 rounded-full bg-gray-600 sm:block"></span>
+
+          <span class="inline-flex items-center gap-2">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.7"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11z" />
+            </svg>
+            Please read carefully
+          </span>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ==================== LEGAL CONTENT ==================== -->
+    <section class="px-5 pb-20 sm:px-8 lg:px-10 lg:pb-28">
+      <div class="mx-auto grid max-w-7xl grid-cols-1 items-start gap-8 lg:grid-cols-[260px_minmax(0,1fr)] lg:gap-12">
+
+        <!-- Sidebar / Table of Contents -->
+        <aside class="lg:sticky lg:top-28">
+          <div class="glass rounded-2xl p-4 shadow-card sm:p-5">
+            <div class="mb-4 flex items-center justify-between">
+              <h2 class="text-sm font-bold text-white">On this page</h2>
+              <span class="rounded-md bg-white/[0.05] px-2 py-1 text-[10px] font-semibold uppercase tracking-wider text-gray-500">
+                6 Sections
+              </span>
+            </div>
+
+            <nav id="table-of-contents" aria-label="Terms of Service sections" class="grid gap-1">
+              <a class="toc-link active" href="#agreement">
+                <span class="toc-number">01</span>
+                <span>Agreement to Terms</span>
+              </a>
+              <a class="toc-link" href="#accounts">
+                <span class="toc-number">02</span>
+                <span>Accounts & Registration</span>
+              </a>
+              <a class="toc-link" href="#risk-disclosures">
+                <span class="toc-number">03</span>
+                <span>Risk Disclosures & Platform Status</span>
+              </a>
+              <a class="toc-link" href="#intellectual-property">
+                <span class="toc-number">04</span>
+                <span>Intellectual Property Rights</span>
+              </a>
+              <a class="toc-link" href="#liability">
+                <span class="toc-number">05</span>
+                <span>Limitation of Liability</span>
+              </a>
+              <a class="toc-link" href="#modifications-contact">
+                <span class="toc-number">06</span>
+                <span>Modifications & Contact</span>
+              </a>
+            </nav>
+
+            <div class="mt-5 border-t border-white/[0.08] pt-5">
+              <div class="flex gap-3">
+                <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-emerald-400/10 text-emerald-300">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <circle cx="12" cy="12" r="10" />
+                    <path d="M12 16v-4M12 8h.01" />
+                  </svg>
+                </span>
+                <div>
+                  <p class="text-xs font-semibold text-gray-200">Have a question?</p>
+                  <p class="mt-1 text-xs leading-5 text-gray-500">
+                    Contact our team for help with these terms.
+                  </p>
+                  <a
+                    href="mailto:support@daifinance.com"
+                    class="mint-link mt-2 inline-block text-xs font-semibold"
+                  >
+                    Contact support &rarr;
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <p class="mt-4 px-2 text-xs leading-6 text-gray-600">
+            This document is intended to be reviewed alongside our Privacy
+            Policy and any applicable product-specific agreements.
+          </p>
+        </aside>
+
+
+        <!-- Main Document -->
+        <article class="glass min-w-0 rounded-2xl px-5 py-8 shadow-card sm:px-8 sm:py-10 lg:px-12 lg:py-12">
+
+          <!-- Intro -->
+          <div class="mb-10 rounded-xl border border-emerald-400/15 bg-emerald-400/[0.045] p-5 sm:p-6">
+            <div class="flex items-start gap-3.5">
+              <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-400/10 text-emerald-300">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                  <path d="M14 2v6h6M8 13h8M8 17h8" />
+                </svg>
+              </span>
+
+              <div>
+                <h2 class="text-sm font-bold text-white">A note before you begin</h2>
+                <p class="mt-2 text-sm leading-7 text-gray-400">
+                  Please review these Terms of Service before using DaiFinance.
+                  They describe the rules that apply to your use of the website
+                  and any features made available through it. If you do not
+                  agree to these terms, do not use the platform.
+                </p>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- Section 1 -->
+          <section id="agreement" class="legal-section">
+            <div class="mb-4 flex items-center gap-3">
+              <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-emerald-400/15 bg-emerald-400/[0.07] text-sm font-bold text-emerald-300">
+                01
+              </span>
+              <h2 class="text-2xl font-bold text-white sm:text-3xl">
+                Agreement to Terms
+              </h2>
+            </div>
+
+            <p>
+              These Terms of Service ("Terms") govern your access to and use of
+              the DaiFinance website, its content, features, and any related
+              services that expressly refer to these Terms (collectively, the
+              "Platform"). In these Terms, "DaiFinance," "we," "our," and "us"
+              refer to the operator of the Platform, while "you" refers to
+              each visitor or user.
+            </p>
+
+            <h3 class="mt-6 text-base font-semibold text-gray-200">
+              1.1 Acceptance of these Terms
+            </h3>
+            <p class="mt-2">
+              By accessing or using the Platform, you acknowledge that you have
+              read and understood these Terms and agree to be bound by them,
+              together with any policies or additional terms expressly
+              incorporated by reference. If you use the Platform on behalf of
+              an organization, you represent that you have authority to bind
+              that organization to these Terms.
+            </p>
+
+            <h3 class="mt-6 text-base font-semibold text-gray-200">
+              1.2 Eligibility
+            </h3>
+            <p class="mt-2">
+              You must be legally capable of entering into a binding agreement
+              under the laws applicable to you. If a service involves financial
+              activity, you must also satisfy any applicable age, identity
+              verification, residency, suitability, and other eligibility
+              requirements. We may restrict access where required by law or
+              where a user is not eligible for a particular service.
+            </p>
+
+            <h3 class="mt-6 text-base font-semibold text-gray-200">
+              1.3 Scope of the Platform
+            </h3>
+            <p class="mt-2">
+              The Platform may provide educational resources, financial
+              information, illustrative tools, account features, or descriptions
+              of proposed products. Not every feature described on the website
+              is necessarily available, operational, or offered as a regulated
+              financial service. The specific terms applicable to an actual
+              product or service will be provided separately where required.
+            </p>
+
+            <h3 class="mt-6 text-base font-semibold text-gray-200">
+              1.4 Applicable laws
+            </h3>
+            <p class="mt-2">
+              Your use of the Platform remains subject to applicable laws and
+              regulations. You are responsible for determining whether your
+              access to or use of a particular feature is lawful in your
+              jurisdiction.
+            </p>
+          </section>
+
+          <hr class="legal-divider my-10" />
+
+
+          <!-- Section 2 -->
+          <section id="accounts" class="legal-section">
+            <div class="mb-4 flex items-center gap-3">
+              <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-emerald-400/15 bg-emerald-400/[0.07] text-sm font-bold text-emerald-300">
+                02
+              </span>
+              <h2 class="text-2xl font-bold text-white sm:text-3xl">
+                Accounts & Registration
+              </h2>
+            </div>
+
+            <p>
+              Certain features may require you to create an account or provide
+              information about yourself. You agree to provide accurate,
+              current, and complete information and to update it when it
+              changes.
+            </p>
+
+            <h3 class="mt-6 text-base font-semibold text-gray-200">
+              2.1 Account security
+            </h3>
+            <p class="mt-2">
+              You are responsible for maintaining the confidentiality of your
+              account credentials and for taking reasonable steps to protect
+              your account. Do not share your password, authentication codes,
+              private keys, or other sensitive security information with
+              unauthorized persons.
+            </p>
+
+            <ul>
+              <li>
+                Use a strong, unique password and any additional authentication
+                measures made available to you.
+              </li>
+              <li>
+                Notify us promptly if you suspect unauthorized access, account
+                compromise, or suspicious activity.
+              </li>
+              <li>
+                Keep your contact details current so that important account
+                notices can reach you.
+              </li>
+              <li>
+                Sign out of your account when using a shared or public device.
+              </li>
+            </ul>
+
+            <h3 class="mt-6 text-base font-semibold text-gray-200">
+              2.2 Prohibited account activity
+            </h3>
+            <p class="mt-2">
+              You must not impersonate another person, submit fraudulent
+              information, attempt to bypass security controls, use another
+              person's account without permission, or use the Platform for
+              unlawful, deceptive, abusive, or unauthorized purposes.
+            </p>
+
+            <h3 class="mt-6 text-base font-semibold text-gray-200">
+              2.3 Verification and account restrictions
+            </h3>
+            <p class="mt-2">
+              Where appropriate and legally permitted, we may request
+              information to verify identity, eligibility, or compliance with
+              applicable requirements. We may suspend, restrict, or decline
+              access where we reasonably believe that an account presents a
+              security, fraud, compliance, or legal concern. Where required by
+              law, we will provide any applicable notice or process.
+            </p>
+
+            <h3 class="mt-6 text-base font-semibold text-gray-200">
+              2.4 Account termination
+            </h3>
+            <p class="mt-2">
+              You may request account closure using the contact methods made
+              available through the Platform. Certain information may need to
+              be retained to satisfy legal, security, accounting, or dispute
+              resolution obligations. Closing an account does not remove
+              obligations or liabilities that arose before closure.
+            </p>
+          </section>
+
+          <hr class="legal-divider my-10" />
+
+
+          <!-- Section 3 -->
+          <section id="risk-disclosures" class="legal-section">
+            <div class="mb-4 flex items-center gap-3">
+              <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-emerald-400/15 bg-emerald-400/[0.07] text-sm font-bold text-emerald-300">
+                03
+              </span>
+              <h2 class="text-2xl font-bold text-white sm:text-3xl">
+                Risk Disclosures & Platform Status
+              </h2>
+            </div>
+
+            <div class="mb-6 rounded-xl border border-amber-400/20 bg-amber-400/[0.05] p-5">
+              <div class="flex items-start gap-3">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="mt-0.5 shrink-0 text-amber-300"
+                  width="21"
+                  height="21"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="m10.3 3.9-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.7-3.1l-8-14a2 2 0 0 0-3.4 0Z" />
+                  <path d="M12 9v4M12 17h.01" />
+                </svg>
+                <div>
+                  <h3 class="text-sm font-bold text-amber-200">
+                    Important financial risk notice
+                  </h3>
+                  <p class="mt-2 text-sm leading-7 text-gray-400">
+                    All investments involve risk. The value of an investment
+                    may rise or fall, and you may lose some or all of your
+                    capital. No return is guaranteed unless a legally binding
+                    agreement expressly states otherwise, and even then the
+                    ability of a counterparty to meet its obligations may be
+                    uncertain.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <h3 class="mt-6 text-base font-semibold text-gray-200">
+              3.1 Concept platform and illustrative information
+            </h3>
+            <p class="mt-2">
+              DaiFinance may be presented as a concept, demonstration, prototype,
+              or developing platform. Unless a feature has been expressly
+              confirmed as a live service, you should treat sample dashboards,
+              account balances, projected returns, performance charts,
+              transaction histories, investment plans, testimonials, and other
+              example data as illustrative only.
+            </p>
+            <p class="mt-3">
+              Illustrative figures do not establish that funds have been
+              received, assets have been purchased, transactions have occurred,
+              or profits have been earned. A displayed balance or projected
+              return is not evidence of actual funds held for your benefit.
+              Do not transfer money or disclose payment credentials based
+              solely on a demonstration, mock-up, or unverified investment
+              offer.
+            </p>
+
+            <h3 class="mt-6 text-base font-semibold text-gray-200">
+              3.2 No guarantee of returns
+            </h3>
+            <p class="mt-2">
+              Any stated or displayed return, rate, yield, forecast, target, or
+              projection is subject to the specific disclosures and contractual
+              terms applicable to the relevant product. Forecasts are not
+              promises of future results. We do not represent that any
+              investment will produce a particular return, remain profitable,
+              or preserve your initial capital.
+            </p>
+
+            <h3 class="mt-6 text-base font-semibold text-gray-200">
+              3.3 Market and investment risks
+            </h3>
+            <p class="mt-2">
+              Depending on the product, risks may include market volatility,
+              liquidity constraints, interest-rate changes, inflation,
+              currency fluctuations, counterparty default, operational failures,
+              cyberattacks, regulatory changes, and delays or inability to
+              withdraw assets. Some products may involve additional risks that
+              are not listed here.
+            </p>
+            <ul>
+              <li>
+                Never invest money you cannot afford to lose without carefully
+                considering your financial circumstances.
+              </li>
+              <li>
+                Review the actual product documentation, fees, withdrawal
+                conditions, and risk disclosures before making a financial
+                decision.
+              </li>
+              <li>
+                Seek advice from an appropriately qualified independent
+                professional if you do not understand a product or its risks.
+              </li>
+            </ul>
+
+            <h3 class="mt-6 text-base font-semibold text-gray-200">
+              3.4 No personalized financial, legal, or tax advice
+            </h3>
+            <p class="mt-2">
+              Unless expressly agreed in a separate written engagement,
+              content on the Platform is for general informational or
+              educational purposes and is not personalized investment,
+              financial, legal, or tax advice. Information on the Platform
+              should not be treated as a recommendation to buy, sell, hold,
+              or otherwise transact in any asset.
+            </p>
+
+            <h3 class="mt-6 text-base font-semibold text-gray-200">
+              3.5 Regulatory status
+            </h3>
+            <p class="mt-2">
+              The availability of a website or investment-related interface
+              does not establish that its operator is licensed, registered,
+              insured, or authorized to provide a regulated financial service.
+              Any such status must be independently verified with the relevant
+              regulator. DaiFinance should not be understood as offering
+              regulated investment management, brokerage, custody, deposit,
+              or other financial services unless the relevant service is
+              lawfully established and expressly identified as such.
+            </p>
+
+            <h3 class="mt-6 text-base font-semibold text-gray-200">
+              3.6 Fees, deposits, and withdrawals
+            </h3>
+            <p class="mt-2">
+              Any actual fees, funding requirements, withdrawal rules,
+              settlement periods, or transaction limits must be disclosed in
+              the applicable product terms before you commit to a transaction.
+              Illustrative interface labels are not a substitute for those
+              terms. Never assume that a displayed withdrawal time or fee
+              applies to a live transaction unless it has been confirmed in
+              the governing product documentation.
+            </p>
+          </section>
+
+          <hr class="legal-divider my-10" />
+
+
+          <!-- Section 4 -->
+          <section id="intellectual-property" class="legal-section">
+            <div class="mb-4 flex items-center gap-3">
+              <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-emerald-400/15 bg-emerald-400/[0.07] text-sm font-bold text-emerald-300">
+                04
+              </span>
+              <h2 class="text-2xl font-bold text-white sm:text-3xl">
+                Intellectual Property Rights
+              </h2>
+            </div>
+
+            <h3 class="mt-6 text-base font-semibold text-gray-200">
+              4.1 Ownership
+            </h3>
+            <p class="mt-2">
+              Subject to applicable law and third-party rights, the Platform's
+              original branding, logos, visual identity, interface design,
+              written content, graphics, software, and other materials are
+              owned by DaiFinance or used under appropriate permission or
+              license. The applicable rights may include copyright, trademark,
+              design, and other intellectual property rights.
+            </p>
+
+            <h3 class="mt-6 text-base font-semibold text-gray-200">
+              4.2 Limited permission to use the Platform
+            </h3>
+            <p class="mt-2">
+              While you comply with these Terms, we grant you a limited,
+              personal, non-exclusive, non-transferable, and revocable right
+              to access and use the Platform for its intended lawful purpose.
+              This permission does not transfer ownership of any intellectual
+              property to you.
+            </p>
+
+            <h3 class="mt-6 text-base font-semibold text-gray-200">
+              4.3 Restrictions
+            </h3>
+            <p class="mt-2">
+              Unless permitted by law or authorized by the relevant rights
+              holder, you must not:
+            </p>
+            <ul>
+              <li>
+                Copy, republish, sell, distribute, or commercially exploit
+                Platform content without permission.
+              </li>
+              <li>
+                Reverse engineer, decompile, or attempt to extract source code
+                from software except where applicable law permits it.
+              </li>
+              <li>
+                Remove copyright notices, trademarks, or other proprietary
+                notices.
+              </li>
+              <li>
+                Use DaiFinance branding or materials in a way that implies
+                endorsement, affiliation, or authorization that does not exist.
+              </li>
+            </ul>
+
+            <h3 class="mt-6 text-base font-semibold text-gray-200">
+              4.4 Third-party materials
+            </h3>
+            <p class="mt-2">
+              Third-party names, logos, content, libraries, or services remain
+              the property of their respective owners and may be governed by
+              separate license terms. Nothing in these Terms grants you rights
+              to third-party intellectual property beyond any applicable
+              license or legal permission.
+            </p>
+          </section>
+
+          <hr class="legal-divider my-10" />
+
+
+          <!-- Section 5 -->
+          <section id="liability" class="legal-section">
+            <div class="mb-4 flex items-center gap-3">
+              <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-emerald-400/15 bg-emerald-400/[0.07] text-sm font-bold text-emerald-300">
+                05
+              </span>
+              <h2 class="text-2xl font-bold text-white sm:text-3xl">
+                Limitation of Liability
+              </h2>
+            </div>
+
+            <h3 class="mt-6 text-base font-semibold text-gray-200">
+              5.1 Platform availability
+            </h3>
+            <p class="mt-2">
+              We aim to make the Platform useful and accessible, but we do not
+              promise uninterrupted, error-free, or continuously available
+              access. Features may be changed, suspended, or discontinued for
+              maintenance, security, operational, legal, or other legitimate
+              reasons. We will provide notice where required by applicable law
+              or a relevant agreement.
+            </p>
+
+            <h3 class="mt-6 text-base font-semibold text-gray-200">
+              5.2 Information provided "as is"
+            </h3>
+            <p class="mt-2">
+              To the extent permitted by applicable law, Platform content and
+              general information are provided on an "as is" and "as available"
+              basis. We do not warrant that every item of information is
+              complete, accurate, current, suitable for your circumstances,
+              or free of technical errors. You are responsible for independently
+              evaluating information before relying on it.
+            </p>
+
+            <h3 class="mt-6 text-base font-semibold text-gray-200">
+              5.3 Third-party websites and services
+            </h3>
+            <p class="mt-2">
+              The Platform may link to external websites, payment providers,
+              data sources, or other third-party services. We do not control
+              every external service and are not responsible for its content,
+              availability, security practices, or independent policies.
+              A link does not necessarily mean that we endorse the linked
+              provider. Review the terms and privacy policies of third parties
+              before using their services.
+            </p>
+
+            <h3 class="mt-6 text-base font-semibold text-gray-200">
+              5.4 Exclusion and limitation of liability
+            </h3>
+            <p class="mt-2">
+              To the maximum extent permitted by applicable law, DaiFinance
+              and its relevant personnel or service providers will not be
+              liable for indirect, incidental, special, consequential, or
+              punitive losses, or loss of profits, revenue, data, goodwill,
+              or business opportunities arising from your use of or inability
+              to use the Platform.
+            </p>
+            <p class="mt-3">
+              To the extent permitted by law, our aggregate liability for
+              claims arising directly from the Platform will be limited to the
+              amount, if any, that you paid directly to DaiFinance for the
+              specific Platform service giving rise to the claim during the
+              twelve months before the event. If you paid nothing for that
+              service, the applicable limit will be determined by governing
+              law and the facts of the claim.
+            </p>
+            <p class="mt-3">
+              These limitations do not exclude or restrict liability where such
+              exclusion or restriction is prohibited by law, including any
+              non-excludable consumer rights, or any liability that cannot
+              lawfully be limited under applicable law.
+            </p>
+
+            <h3 class="mt-6 text-base font-semibold text-gray-200">
+              5.5 Indemnity
+            </h3>
+            <p class="mt-2">
+              To the extent permitted by applicable law, you may be responsible
+              for losses or reasonable costs arising from your unlawful use
+              of the Platform, your material breach of these Terms, or your
+              infringement of another person's rights. This provision does
+              not require you to indemnify us for losses caused by our own
+              unlawful conduct or waive any rights that cannot lawfully be
+              waived.
+            </p>
+
+            <h3 class="mt-6 text-base font-semibold text-gray-200">
+              5.6 Events outside our reasonable control
+            </h3>
+            <p class="mt-2">
+              We will not be responsible for delays or failures caused by
+              events beyond our reasonable control, to the extent permitted
+              by applicable law. Examples may include widespread network
+              failures, natural disasters, government actions, and major
+              infrastructure disruptions.
+            </p>
+          </section>
+
+          <hr class="legal-divider my-10" />
+
+
+          <!-- Section 6 -->
+          <section id="modifications-contact" class="legal-section">
+            <div class="mb-4 flex items-center gap-3">
+              <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-emerald-400/15 bg-emerald-400/[0.07] text-sm font-bold text-emerald-300">
+                06
+              </span>
+              <h2 class="text-2xl font-bold text-white sm:text-3xl">
+                Modifications & Contact
+              </h2>
+            </div>
+
+            <h3 class="mt-6 text-base font-semibold text-gray-200">
+              6.1 Updates to these Terms
+            </h3>
+            <p class="mt-2">
+              We may update these Terms to reflect changes to the Platform,
+              our operations, applicable law, security requirements, or other
+              legitimate needs. When we make a material change, we will update
+              the date shown at the top of this page and provide any additional
+              notice required by law. If a change requires your consent, we
+              will request it where applicable.
+            </p>
+            <p class="mt-3">
+              Your use of the Platform after updated Terms become effective
+              will be subject to the revised Terms, to the extent permitted
+              by law. If you do not agree to a change, you should stop using
+              the affected service and contact us if you need assistance.
+            </p>
+
+            <h3 class="mt-6 text-base font-semibold text-gray-200">
+              6.2 Governing law and disputes
+            </h3>
+            <p class="mt-2">
+              These Terms are subject to the laws applicable to the operator
+              of the Platform and the relevant user relationship, as determined
+              by the applicable legal framework. Any dispute will be handled
+              by the courts or other dispute-resolution body with jurisdiction
+              under applicable law. Nothing in this section removes mandatory
+              consumer protections or other rights that apply in your
+              jurisdiction.
+            </p>
+
+            <h3 class="mt-6 text-base font-semibold text-gray-200">
+              6.3 General provisions
+            </h3>
+            <p class="mt-2">
+              If any provision of these Terms is found unenforceable, the
+              remaining provisions will continue to apply to the extent
+              permitted by law. Our failure to enforce a provision does not
+              automatically waive our right to enforce it later. These Terms
+              do not create a partnership, agency, fiduciary relationship,
+              or employment relationship unless a separate valid agreement
+              expressly provides otherwise.
+            </p>
+
+            <h3 class="mt-6 text-base font-semibold text-gray-200">
+              6.4 Contact us
+            </h3>
+            <p class="mt-2">
+              If you have questions about these Terms, need clarification
+              about the status of a feature, or wish to raise a legal inquiry,
+              contact us using the details below.
+            </p>
+
+            <div class="mt-5 rounded-xl border border-white/[0.08] bg-white/[0.025] p-5 sm:p-6">
+              <div class="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
+                <div class="flex items-start gap-3">
+                  <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-emerald-400/10 text-emerald-300">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="21"
+                      height="21"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.7"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <rect x="2" y="4" width="20" height="16" rx="2" />
+                      <path d="m22 7-10 6L2 7" />
+                    </svg>
+                  </span>
+                  <div>
+                    <p class="text-sm font-bold text-white">Legal & general inquiries</p>
+                    <p class="mt-1 text-sm text-gray-500">
+                      DaiFinance Support
+                    </p>
+                    <a
+                      href="mailto:support@daifinance.com?subject=Terms%20of%20Service%20Inquiry"
+                      class="mint-link mt-2 inline-block break-all text-sm font-semibold"
+                    >
+                      support@daifinance.com
+                    </a>
+                  </div>
+                </div>
+
+                <a
+                  href="mailto:support@daifinance.com?subject=Terms%20of%20Service%20Inquiry"
+                  class="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl border border-emerald-400/20 bg-emerald-400/[0.07] px-4 py-3 text-sm font-semibold text-emerald-300 hover:border-emerald-400/40 hover:bg-emerald-400/[0.12]"
+                >
+                  Contact Us
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M7 17 17 7" />
+                    <path d="M7 7h10v10" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </section>
+
+
+          <!-- Document closing -->
+          <div class="mt-12 border-t border-white/[0.08] pt-7">
+            <p class="text-xs leading-6 text-gray-500">
+              By continuing to use the Platform, you acknowledge that you have
+              had the opportunity to review these Terms. Please consult the
+              applicable product documentation before making any financial
+              decision.
+            </p>
+            <a
+              href="#top"
+              class="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-emerald-300 hover:text-emerald-200"
+            >
+              Back to top
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="m18 15-6-6-6 6" />
+              </svg>
+            </a>
+          </div>
+
+        </article>
+      </div>
+    </section>
+
+
+    <!-- ==================== SUPPORT CTA ==================== -->
+    <section class="px-5 pb-20 sm:px-8 lg:px-10">
+      <div class="relative mx-auto max-w-7xl overflow-hidden rounded-3xl border border-emerald-400/15 bg-gradient-to-br from-emerald-400/[0.09] via-[#111827] to-[#111827] px-6 py-10 sm:px-10 sm:py-12 lg:px-14">
+        <div class="pointer-events-none absolute -right-16 -top-20 h-64 w-64 rounded-full bg-emerald-400/[0.07] blur-3xl"></div>
+
+        <div class="relative flex flex-col gap-7 md:flex-row md:items-center md:justify-between">
+          <div class="max-w-2xl">
+            <p class="text-xs font-bold uppercase tracking-[0.2em] text-emerald-300">
+              Need clarification?
+            </p>
+            <h2 class="mt-3 text-2xl font-bold tracking-tight text-white sm:text-3xl">
+              Clear terms. Better-informed decisions.
+            </h2>
+            <p class="mt-3 text-sm leading-7 text-gray-400 sm:text-base">
+              If something in our terms is unclear, contact our team before
+              using a feature or entering into a financial arrangement.
+            </p>
+          </div>
+
+          <a
+            href="mailto:support@daifinance.com?subject=Terms%20of%20Service%20Question"
+            class="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl bg-emerald-500 px-5 py-3.5 text-sm font-bold text-[#052e24] shadow-lg shadow-emerald-500/10 hover:bg-emerald-400 focus:outline-none focus:ring-2 focus:ring-emerald-300 focus:ring-offset-2 focus:ring-offset-ink"
+          >
+            Contact Support
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="17"
+              height="17"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M7 17 17 7" />
+              <path d="M7 7h10v10" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="border-t border-white/[0.07] bg-[#080c14]">
+    <div class="mx-auto max-w-7xl px-5 py-12 sm:px-8 lg:px-10 lg:py-14">
+
+      <div class="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr] lg:gap-12">
+
+        <!-- Brand Column -->
+        <div>
+          <a href="index.html" class="inline-flex items-center gap-2.5" aria-label="DaiFinance home">
+            <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-emerald-500/15 text-emerald-400 ring-1 ring-emerald-400/20">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="21"
+                height="21"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M3 3v18h18" />
+                <path d="m7 14 4-4 4 4 6-7" />
+              </svg>
+            </span>
+            <span class="text-xl font-extrabold tracking-tight text-white">
+              DaiFinance<span class="text-emerald-400">.</span>
+            </span>
+          </a>
+
+          <p class="mt-4 max-w-sm text-sm leading-7 text-gray-500">
+            A modern financial platform concept focused on clear information,
+            thoughtful design, and a more accessible digital experience.
+          </p>
+
+          <div class="mt-5 inline-flex items-center gap-2 rounded-full border border-white/[0.08] bg-white/[0.025] px-3 py-1.5 text-xs text-gray-500">
+            <span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
+            Built around transparency
+          </div>
+        </div>
+
+        <!-- Explore -->
+        <div>
+          <h2 class="text-sm font-bold text-white">Explore</h2>
+          <ul class="mt-5 grid gap-3.5">
+            <li><a href="about.html" class="text-sm text-gray-500 hover:text-emerald-300">About Us</a></li>
+            <li><a href="services.html" class="text-sm text-gray-500 hover:text-emerald-300">Services</a></li>
+            <li><a href="investment-plans.html" class="text-sm text-gray-500 hover:text-emerald-300">Investment Plans</a></li>
+            <li><a href="faq.html" class="text-sm text-gray-500 hover:text-emerald-300">Frequently Asked Questions</a></li>
+          </ul>
+        </div>
+
+        <!-- Account -->
+        <div>
+          <h2 class="text-sm font-bold text-white">Your Account</h2>
+          <ul class="mt-5 grid gap-3.5">
+            <li><a href="login.html" class="text-sm text-gray-500 hover:text-emerald-300">Sign In</a></li>
+            <li><a href="register.html" class="text-sm text-gray-500 hover:text-emerald-300">Create Account</a></li>
+            <li><a href="contact.html" class="text-sm text-gray-500 hover:text-emerald-300">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <!-- Legal -->
+        <div>
+          <h2 class="text-sm font-bold text-white">Legal</h2>
+          <ul class="mt-5 grid gap-3.5">
+            <li>
+              <a href="terms.html" aria-current="page" class="text-sm font-semibold text-emerald-300">
+                Terms of Service
+              </a>
+            </li>
+            <li><a href="privacy.html" class="text-sm text-gray-500 hover:text-emerald-300">Privacy Policy</a></li>
+            <li><a href="risk-disclosure.html" class="text-sm text-gray-500 hover:text-emerald-300">Risk Disclosure</a></li>
+            <li><a href="mailto:support@daifinance.com" class="text-sm text-gray-500 hover:text-emerald-300">Legal Inquiries</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Risk Notice -->
+      <div class="mt-10 rounded-xl border border-white/[0.07] bg-white/[0.02] p-4 sm:p-5">
+        <div class="flex items-start gap-3">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="mt-0.5 shrink-0 text-gray-500"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <circle cx="12" cy="12" r="10" />
+            <path d="M12 16v-4M12 8h.01" />
+          </svg>
+          <p class="text-xs leading-6 text-gray-500">
+            <strong class="font-semibold text-gray-400">Important notice:</strong>
+            Investment products involve risk, and losses are possible. Any
+            simulated or illustrative figures are not actual investment
+            performance or a promise of returns. Verify the legal status,
+            applicable disclosures, and terms of any financial service before
+            committing funds.
+          </p>
+        </div>
+      </div>
+
+      <!-- Bottom Footer -->
+      <div class="mt-8 flex flex-col gap-4 border-t border-white/[0.07] pt-6 sm:flex-row sm:items-center sm:justify-between">
+        <p class="text-xs text-gray-600">
+          &copy; <span id="current-year">2026</span> DaiFinance. All rights reserved.
+        </p>
+
+        <div class="flex flex-wrap items-center gap-x-5 gap-y-2">
+          <a href="terms.html" class="text-xs text-gray-500 hover:text-emerald-300">Terms</a>
+          <a href="privacy.html" class="text-xs text-gray-500 hover:text-emerald-300">Privacy</a>
+          <a href="mailto:support@daifinance.com" class="text-xs text-gray-500 hover:text-emerald-300">Support</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+
+  <!-- ==================== JAVASCRIPT ==================== -->
+  <script>
+    // Mobile navigation
+    const menuToggle = document.getElementById("menu-toggle");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const menuOpenIcon = document.getElementById("menu-open-icon");
+    const menuCloseIcon = document.getElementById("menu-close-icon");
+
+    function closeMobileMenu() {
+      mobileMenu.hidden = true;
+      menuToggle.setAttribute("aria-expanded", "false");
+      menuToggle.setAttribute("aria-label", "Open navigation menu");
+      menuOpenIcon.classList.remove("hidden");
+      menuCloseIcon.classList.add("hidden");
+    }
+
+    menuToggle.addEventListener("click", () => {
+      const isExpanded = menuToggle.getAttribute("aria-expanded") === "true";
+
+      if (isExpanded) {
+        closeMobileMenu();
+      } else {
+        mobileMenu.hidden = false;
+        menuToggle.setAttribute("aria-expanded", "true");
+        menuToggle.setAttribute("aria-label", "Close navigation menu");
+        menuOpenIcon.classList.add("hidden");
+        menuCloseIcon.classList.remove("hidden");
+      }
+    });
+
+    mobileMenu.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", closeMobileMenu);
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && !mobileMenu.hidden) {
+        closeMobileMenu();
+        menuToggle.focus();
+      }
+    });
+
+    // Automatically update the copyright year
+    document.getElementById("current-year").textContent =
+      new Date().getFullYear();
+
+    // Highlight the currently visible legal section in the table of contents
+    const legalSections = document.querySelectorAll(".legal-section");
+    const tocLinks = document.querySelectorAll(".toc-link");
+
+    if ("IntersectionObserver" in window) {
+      const sectionObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              tocLinks.forEach((link) => {
+                const isActive =
+                  link.getAttribute("href") === "#" + entry.target.id;
+
+                link.classList.toggle("active", isActive);
+
+                if (isActive) {
+                  link.setAttribute("aria-current", "location");
+                } else {
+                  link.removeAttribute("aria-current");
+                }
+              });
+            }
+          });
+        },
+        {
+          rootMargin: "-18% 0px -68% 0px",
+          threshold: 0
+        }
+      );
+
+      legalSections.forEach((section) => {
+        sectionObserver.observe(section);
+      });
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,863 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0B0F19">
+  <meta name="description" content="Discover DiFinance's approach to financial clarity, thoughtful investing, risk awareness, and long-term financial decision-making.">
+  <title>About Us | DaiFinance.</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink: "#0B0F19",
+            panel: "#111827",
+            emerald: "#10B981",
+            mint: "#6EE7B7",
+            muted: "#94A3B8"
+          },
+          fontFamily: {
+            sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    :root {
+      --ink: #0B0F19;
+      --panel: #111827;
+      --emerald: #10B981;
+      --mint: #6EE7B7;
+      --muted: #94A3B8;
+      --line: rgba(148, 163, 184, 0.15);
+      --glass: rgba(17, 24, 39, 0.72);
+      --gradient: linear-gradient(135deg, #10B981, #059669);
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 100px;
+    }
+
+    body {
+      margin: 0;
+      background: var(--ink);
+      color: #F8FAFC;
+      font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse at 12% 8%, rgba(16,185,129,.10), transparent 36%),
+        radial-gradient(ellipse at 90% 30%, rgba(59,130,246,.08), transparent 34%),
+        radial-gradient(ellipse at 48% 78%, rgba(16,185,129,.045), transparent 38%);
+    }
+
+    a { text-decoration: none; }
+
+    a:focus-visible, button:focus-visible {
+      outline: 2px solid var(--mint);
+      outline-offset: 4px;
+      border-radius: 8px;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(11, 15, 25, .86);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-link {
+      color: var(--muted);
+      transition: color .2s ease;
+    }
+
+    .nav-link:hover, .nav-link[aria-current="page"] {
+      color: var(--mint);
+    }
+
+    .glass {
+      background: var(--glass);
+      border: 1px solid var(--line);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 18px 60px rgba(0,0,0,.13);
+    }
+
+    .primary-btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 9px;
+      padding: 13px 19px;
+      border: 1px solid rgba(110,231,183,.2);
+      border-radius: 11px;
+      background: var(--gradient);
+      color: #fff;
+      font-size: .9rem;
+      font-weight: 600;
+      box-shadow: 0 5px 24px rgba(16,185,129,.18);
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .primary-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(16,185,129,.29);
+    }
+
+    .outline-btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 9px;
+      padding: 12px 18px;
+      border: 1px solid rgba(148,163,184,.24);
+      border-radius: 11px;
+      color: #E2E8F0;
+      font-size: .9rem;
+      font-weight: 500;
+      background: rgba(17,24,39,.42);
+      transition: border-color .2s ease, background .2s ease;
+    }
+
+    .outline-btn:hover {
+      border-color: rgba(110,231,183,.5);
+      background: rgba(16,185,129,.07);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--mint);
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      font-size: .73rem;
+      font-weight: 700;
+    }
+
+    .eyebrow-dot {
+      height: 7px;
+      width: 7px;
+      flex: 0 0 7px;
+      border-radius: 999px;
+      background: var(--emerald);
+      box-shadow: 0 0 12px rgba(16,185,129,.7);
+    }
+
+    .section-heading {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 700;
+      line-height: 1.12;
+      letter-spacing: -.045em;
+    }
+
+    .gradient-text {
+      background: linear-gradient(100deg, #6EE7B7 0%, #10B981 55%, #059669 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .muted { color: var(--muted); }
+
+    .section-pad { padding-top: 96px; padding-bottom: 96px; }
+
+    .icon-box {
+      display: grid;
+      width: 46px;
+      height: 46px;
+      flex: 0 0 46px;
+      place-items: center;
+      border-radius: 13px;
+      border: 1px solid rgba(16,185,129,.24);
+      background: rgba(16,185,129,.09);
+      color: var(--mint);
+    }
+
+    .feature-card {
+      height: 100%;
+      padding: 25px;
+      border: 1px solid var(--line);
+      border-radius: 17px;
+      background: rgba(17,24,39,.65);
+      transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(16,185,129,.38);
+      box-shadow: 0 15px 42px rgba(0,0,0,.18), 0 0 22px rgba(16,185,129,.045);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.12fr) minmax(320px, .88fr);
+      align-items: center;
+      gap: 56px;
+    }
+
+    .hero-title {
+      font-size: clamp(2.7rem, 5.4vw, 4.6rem);
+      line-height: 1.04;
+      letter-spacing: -.06em;
+      font-weight: 700;
+    }
+
+    .hero-orb {
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      right: 8%;
+      top: 2%;
+      border-radius: 50%;
+      background: rgba(16,185,129,.11);
+      filter: blur(70px);
+      pointer-events: none;
+    }
+
+    .mini-label {
+      font-size: .75rem;
+      color: var(--muted);
+    }
+
+    .mini-value {
+      font-size: 1.65rem;
+      font-weight: 700;
+      letter-spacing: -.04em;
+    }
+
+    .metric-number {
+      font-size: clamp(2rem, 3vw, 2.8rem);
+      font-weight: 700;
+      letter-spacing: -.05em;
+    }
+
+    .metric-divider {
+      border-right: 1px solid var(--line);
+    }
+
+    .approach-item {
+      display: flex;
+      gap: 15px;
+      align-items: flex-start;
+    }
+
+    .step-number {
+      display: grid;
+      width: 34px;
+      height: 34px;
+      flex: 0 0 34px;
+      place-items: center;
+      border: 1px solid rgba(16,185,129,.25);
+      background: rgba(16,185,129,.08);
+      color: var(--mint);
+      border-radius: 10px;
+      font-size: .78rem;
+      font-weight: 700;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: #CBD5E1;
+      background: rgba(17,24,39,.56);
+      font-size: .78rem;
+    }
+
+    .footer-link {
+      color: var(--muted);
+      transition: color .2s ease;
+    }
+
+    .footer-link:hover { color: var(--mint); }
+
+    .mobile-menu[hidden] { display: none; }
+
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 36px; }
+      .hero-title { max-width: 750px; }
+      .hero-aside { max-width: 600px; width: 100%; }
+      .section-pad { padding-top: 76px; padding-bottom: 76px; }
+    }
+
+    @media (max-width: 640px) {
+      .section-pad { padding-top: 64px; padding-bottom: 64px; }
+      .metric-divider { border-right: 0; }
+      .feature-card { padding: 21px; }
+      .hero-title { font-size: clamp(2.55rem, 12vw, 3.7rem); }
+      .nav-mobile-pad { padding-left: 20px; padding-right: 20px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="font-sans">
+  <!-- Navigation -->
+  <header class="site-header">
+    <nav class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-8"
+         aria-label="Main navigation">
+      <a href="./index.html" class="text-xl font-extrabold tracking-tight text-white"
+         aria-label="FinanceDai home">
+        DaiFinance<span class="text-emerald-400">.</span>
+      </a>
+
+      <div class="hidden items-center gap-8 text-sm font-medium lg:flex">
+        <a href="./about.html" class="nav-link" aria-current="page">About Us</a>
+        <a href="./index.html#services" class="nav-link">Services</a>
+        <a href="./index.html#plans" class="nav-link">Investment Plans</a>
+        <a href="./index.html#faq" class="nav-link">FAQ</a>
+      </div>
+
+      <div class="hidden items-center gap-3 lg:flex">
+        <a href="./login.html" class="outline-btn">Sign In</a>
+        <a href="./register.html" class="primary-btn">Create Account <span aria-hidden="true">↗</span></a>
+      </div>
+
+      <button id="menu-toggle"
+              class="outline-btn !p-2.5 lg:!hidden"
+              type="button"
+              aria-label="Open navigation menu"
+              aria-expanded="false"
+              aria-controls="mobile-menu">
+        <svg id="menu-icon" width="22" height="22" viewBox="0 0 24 24"
+             fill="none" stroke="currentColor" stroke-width="1.8"
+             stroke-linecap="round" aria-hidden="true">
+          <path d="M4 7h16M4 12h16M4 17h16"/>
+        </svg>
+      </button>
+    </nav>
+
+    <div id="mobile-menu" class="mobile-menu nav-mobile-pad px-5 pb-5 lg:hidden" hidden>
+      <div class="glass flex flex-col gap-1 rounded-2xl p-3">
+        <a href="./about.html" class="nav-link rounded-lg px-3 py-3" aria-current="page">About Us</a>
+        <a href="./index.html#services" class="nav-link rounded-lg px-3 py-3">Services</a>
+        <a href="./index.html#plans" class="nav-link rounded-lg px-3 py-3">Investment Plans</a>
+        <a href="./index.html#faq" class="nav-link rounded-lg px-3 py-3">FAQ</a>
+        <div class="mt-2 grid grid-cols-2 gap-2 border-t border-slate-700/60 pt-3">
+          <a href="./login.html" class="outline-btn">Sign In</a>
+          <a href="./register.html" class="primary-btn">Create Account</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="relative overflow-hidden">
+      <div class="hero-orb"></div>
+      <div class="relative mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-28">
+        <div class="hero-grid">
+          <div>
+            <div class="eyebrow mb-6"><span class="eyebrow-dot"></span> Our story</div>
+            <h1 class="hero-title max-w-3xl">
+              A clearer view of money.<br>
+              <span class="gradient-text">A more considered future.</span>
+            </h1>
+            <p class="muted mt-7 max-w-2xl text-base leading-8 sm:text-lg">
+              Financial decisions deserve more than bold claims. DiFinance is built around
+              clearer information, thoughtful choices, and a more grounded understanding
+              of what investing can—and cannot—do.
+            </p>
+            <div class="mt-9 flex flex-wrap gap-3">
+              <a href="./index.html#plans" class="primary-btn">
+                Explore Investment Plans <span aria-hidden="true">↗</span>
+              </a>
+              <a href="#our-approach" class="outline-btn">Discover our approach</a>
+            </div>
+            <div class="mt-8 flex flex-wrap items-center gap-x-5 gap-y-3 text-xs muted">
+              <span class="inline-flex items-center gap-2">
+                <span class="eyebrow-dot"></span> Clarity over hype
+              </span>
+              <span class="inline-flex items-center gap-2">
+                <span class="eyebrow-dot"></span> Risk in the conversation
+              </span>
+            </div>
+          </div>
+
+          <!-- Illustrative visual: not a live account or portfolio -->
+          <aside class="hero-aside glass relative overflow-hidden rounded-3xl p-6 sm:p-8"
+                 aria-label="Illustration of our investing philosophy">
+            <div class="absolute right-0 top-0 h-40 w-40 rounded-full bg-emerald-400/10 blur-3xl"
+                 aria-hidden="true"></div>
+            <div class="relative">
+              <div class="flex items-center justify-between gap-4">
+                <div>
+                  <p class="text-sm font-semibold text-white">A thoughtful starting point</p>
+                  <p class="mt-1 text-xs muted">Illustrative framework · Not live account data</p>
+                </div>
+                <div class="icon-box">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none"
+                       stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+                    <path d="M3 17l6-6 4 3 8-8"/>
+                    <path d="M15 6h6v6"/>
+                  </svg>
+                </div>
+              </div>
+
+              <div class="mt-8 rounded-2xl border border-slate-700/60 bg-slate-950/35 p-5">
+                <p class="mini-label">The decision-making process</p>
+                <p class="mt-2 text-2xl font-semibold tracking-tight">Understand first.</p>
+                <p class="mt-2 text-sm leading-6 muted">
+                  Know the objective, the trade-offs, and the risks before deciding what
+                  deserves your capital.
+                </p>
+                <div class="mt-6 space-y-4">
+                  <div>
+                    <div class="mb-2 flex justify-between text-xs">
+                      <span class="text-slate-300">Goals &amp; time horizon</span>
+                      <span class="text-emerald-300">01</span>
+                    </div>
+                    <div class="h-1.5 overflow-hidden rounded-full bg-slate-800">
+                      <div class="h-full w-full rounded-full bg-emerald-500/80"></div>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="mb-2 flex justify-between text-xs">
+                      <span class="text-slate-300">Risk &amp; liquidity</span>
+                      <span class="text-emerald-300">02</span>
+                    </div>
+                    <div class="h-1.5 overflow-hidden rounded-full bg-slate-800">
+                      <div class="h-full w-4/5 rounded-full bg-emerald-500/60"></div>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="mb-2 flex justify-between text-xs">
+                      <span class="text-slate-300">Costs &amp; conditions</span>
+                      <span class="text-emerald-300">03</span>
+                    </div>
+                    <div class="h-1.5 overflow-hidden rounded-full bg-slate-800">
+                      <div class="h-full w-3/5 rounded-full bg-emerald-500/40"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <p class="mt-4 text-xs leading-5 muted">
+                Visual proportions are decorative only. They do not represent measured
+                performance, allocations, or account results.
+              </p>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mission -->
+    <section class="section-pad border-t border-slate-800/60">
+      <div class="mx-auto grid max-w-7xl gap-12 px-5 lg:grid-cols-2 lg:gap-20 lg:px-8">
+        <div>
+          <div class="eyebrow mb-5"><span class="eyebrow-dot"></span> Why we exist</div>
+          <h2 class="section-heading">
+            Financial choices should start with <span class="gradient-text">understanding.</span>
+          </h2>
+        </div>
+        <div class="space-y-5 text-sm leading-7 muted sm:text-base">
+          <p>
+            DiFinance is shaped by a simple idea: people should be able to approach
+            financial decisions with greater clarity and fewer unanswered questions.
+            Money is personal, goals differ, and the right decision depends on more than
+            an attractive headline or a projected return.
+          </p>
+          <p>
+            Our purpose is to make important investment concepts easier to explore.
+            That means putting objectives, fees, liquidity, time horizons, and potential
+            downside alongside the opportunities an investment may offer.
+          </p>
+          <p>
+            We value informed participation over pressure. Rather than asking people to
+            rely on grand promises, we encourage them to ask better questions, review
+            available information, and decide whether an option fits their circumstances.
+            Financial confidence should grow from understanding—not from guarantees.
+          </p>
+          <a href="#our-approach"
+             class="inline-flex items-center gap-2 pt-2 text-sm font-semibold text-emerald-300 hover:text-emerald-200">
+            See how we approach investing <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Principles / metrics-style row -->
+    <section class="pb-20">
+      <div class="mx-auto max-w-7xl px-5 lg:px-8">
+        <div class="glass rounded-3xl p-6 sm:p-9">
+          <div class="grid grid-cols-2 gap-y-8 md:grid-cols-4 md:gap-0">
+            <div class="metric-divider px-3 text-center sm:px-5">
+              <p class="metric-number gradient-text">01</p>
+              <p class="mt-2 text-sm font-semibold text-white">Clarity first</p>
+              <p class="mt-2 text-xs leading-5 muted">Understand before committing.</p>
+            </div>
+            <div class="metric-divider px-3 text-center sm:px-5">
+              <p class="metric-number gradient-text">02</p>
+              <p class="mt-2 text-sm font-semibold text-white">Risk included</p>
+              <p class="mt-2 text-xs leading-5 muted">Consider what could go wrong.</p>
+            </div>
+            <div class="metric-divider px-3 text-center sm:px-5">
+              <p class="metric-number gradient-text">03</p>
+              <p class="mt-2 text-sm font-semibold text-white">Long-term view</p>
+              <p class="mt-2 text-xs leading-5 muted">Think beyond the next headline.</p>
+            </div>
+            <div class="px-3 text-center sm:px-5">
+              <p class="metric-number gradient-text">04</p>
+              <p class="mt-2 text-sm font-semibold text-white">Keep learning</p>
+              <p class="mt-2 text-xs leading-5 muted">Revisit assumptions as facts change.</p>
+            </div>
+          </div>
+          <p class="mt-7 border-t border-slate-700/60 pt-5 text-center text-xs leading-5 muted">
+            These numbered principles are illustrative labels, not financial performance
+            statistics, client counts, assets under management, or operating-history claims.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Values -->
+    <section id="our-values" class="section-pad border-t border-slate-800/60">
+      <div class="mx-auto max-w-7xl px-5 lg:px-8">
+        <div class="mx-auto mb-14 max-w-2xl text-center">
+          <div class="eyebrow mb-5"><span class="eyebrow-dot"></span> What guides us</div>
+          <h2 class="section-heading">Principles that <span class="gradient-text">keep us grounded.</span></h2>
+          <p class="muted mt-5 text-sm leading-7 sm:text-base">
+            The way financial information is presented matters. These principles shape
+            the experience we aim to create and the standards we hold ourselves to.
+          </p>
+        </div>
+
+        <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <article class="feature-card">
+            <div class="icon-box mb-5">
+              <svg width="23" height="23" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+                <path d="M12 3l8 4v5c0 5-3.5 7.5-8 9-4.5-1.5-8-4-8-9V7l8-4z"/>
+                <path d="M8.5 12l2.2 2.2 4.8-5"/>
+              </svg>
+            </div>
+            <h3 class="text-lg font-semibold">Integrity &amp; transparency</h3>
+            <p class="muted mt-3 text-sm leading-7">
+              Clear explanations matter, especially when money is involved. Information
+              should distinguish known facts, estimates, assumptions, and uncertainties.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <div class="icon-box mb-5">
+              <svg width="23" height="23" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+                <circle cx="12" cy="12" r="9"/>
+                <path d="M12 7v5l3.5 2"/>
+              </svg>
+            </div>
+            <h3 class="text-lg font-semibold">A longer perspective</h3>
+            <p class="muted mt-3 text-sm leading-7">
+              Meaningful financial decisions deserve time and context. We encourage
+              consideration of goals, time horizons, changing conditions, and patience.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <div class="icon-box mb-5">
+              <svg width="23" height="23" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+                <circle cx="9" cy="8" r="3.5"/>
+                <path d="M3 20v-2a6 6 0 0112 0v2M16 5.5a3.5 3.5 0 010 6.8M18 15a5 5 0 013 4.5"/>
+              </svg>
+            </div>
+            <h3 class="text-lg font-semibold">People before pressure</h3>
+            <p class="muted mt-3 text-sm leading-7">
+              Different people have different priorities. Helpful support should listen,
+              explain options patiently, and leave room for informed decisions.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <div class="icon-box mb-5">
+              <svg width="23" height="23" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+                <rect x="4" y="10" width="16" height="11" rx="2"/>
+                <path d="M8 10V7a4 4 0 018 0v3M12 14v3"/>
+              </svg>
+            </div>
+            <h3 class="text-lg font-semibold">Security by design</h3>
+            <p class="muted mt-3 text-sm leading-7">
+              Privacy and account protection deserve serious attention throughout a
+              digital experience. Security claims should be specific, accurate, and verifiable.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <div class="icon-box mb-5">
+              <svg width="23" height="23" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+                <path d="M4 19.5A2.5 2.5 0 016.5 17H20"/>
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/>
+                <path d="M8 7h8M8 11h6"/>
+              </svg>
+            </div>
+            <h3 class="text-lg font-semibold">Learning that continues</h3>
+            <p class="muted mt-3 text-sm leading-7">
+              Financial knowledge is built over time. We value accessible explanations
+              that help people question assumptions and understand unfamiliar concepts.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <div class="icon-box mb-5">
+              <svg width="23" height="23" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+                <circle cx="12" cy="12" r="9"/>
+                <path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18"/>
+              </svg>
+            </div>
+            <h3 class="text-lg font-semibold">A global outlook</h3>
+            <p class="muted mt-3 text-sm leading-7">
+              Markets are connected, yet each region has its own rules and realities.
+              We believe in considering the wider picture without ignoring local context.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Approach -->
+    <section id="our-approach" class="section-pad border-t border-slate-800/60">
+      <div class="mx-auto grid max-w-7xl items-center gap-12 px-5 lg:grid-cols-2 lg:gap-20 lg:px-8">
+        <div>
+          <div class="eyebrow mb-5"><span class="eyebrow-dot"></span> How we think</div>
+          <h2 class="section-heading">
+            Better decisions begin with <span class="gradient-text">better questions.</span>
+          </h2>
+          <p class="muted mt-6 text-sm leading-7 sm:text-base">
+            An investment should be considered in context—not in isolation. We focus on
+            the factors that help people assess an opportunity realistically, compare
+            alternatives, and decide what further information they need.
+          </p>
+          <div class="mt-7 flex flex-wrap gap-2">
+            <span class="pill">Diversification</span>
+            <span class="pill">Fees &amp; costs</span>
+            <span class="pill">Liquidity</span>
+            <span class="pill">Risk awareness</span>
+          </div>
+        </div>
+
+        <div class="glass rounded-3xl p-6 sm:p-8">
+          <div class="space-y-7">
+            <div class="approach-item">
+              <div class="step-number">01</div>
+              <div>
+                <h3 class="font-semibold text-white">Start with the objective</h3>
+                <p class="muted mt-2 text-sm leading-6">
+                  Consider why you're investing, when you may need the money, and how
+                  much uncertainty you can reasonably accept.
+                </p>
+              </div>
+            </div>
+            <div class="approach-item">
+              <div class="step-number">02</div>
+              <div>
+                <h3 class="font-semibold text-white">Understand the trade-offs</h3>
+                <p class="muted mt-2 text-sm leading-6">
+                  Examine possible losses, fees, withdrawal restrictions, concentration,
+                  and the assumptions behind any projected outcome.
+                </p>
+              </div>
+            </div>
+            <div class="approach-item">
+              <div class="step-number">03</div>
+              <div>
+                <h3 class="font-semibold text-white">Compare what is available</h3>
+                <p class="muted mt-2 text-sm leading-6">
+                  Review relevant documents and terms. Where details are missing or
+                  unverified, seek clarification rather than filling the gaps with assumptions.
+                </p>
+              </div>
+            </div>
+            <div class="approach-item">
+              <div class="step-number">04</div>
+              <div>
+                <h3 class="font-semibold text-white">Reassess when things change</h3>
+                <p class="muted mt-2 text-sm leading-6">
+                  Goals, market conditions, and personal circumstances can shift.
+                  Regularly revisiting a decision can be as important as making it.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="mt-8 rounded-xl border border-amber-400/15 bg-amber-400/[0.045] p-4">
+            <p class="text-xs leading-6 text-slate-300">
+              <strong class="text-amber-200">A note on risk:</strong>
+              Investments can lose value. Diversification does not eliminate risk, and
+              historical or projected results do not guarantee future outcomes. Review
+              the relevant product terms and disclosures before making a decision.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="px-5 pb-24 pt-4 lg:px-8 lg:pb-28">
+      <div class="relative mx-auto max-w-7xl overflow-hidden rounded-3xl border border-emerald-400/20 bg-slate-900/70 px-6 py-14 text-center sm:px-12 sm:py-16">
+        <div class="pointer-events-none absolute inset-0"
+             style="background:radial-gradient(ellipse at 50% 0%,rgba(16,185,129,.15),transparent 65%)"
+             aria-hidden="true"></div>
+        <div class="relative mx-auto max-w-2xl">
+          <div class="eyebrow mb-5 justify-center"><span class="eyebrow-dot"></span> Your next step</div>
+          <h2 class="section-heading">
+            Move forward with <span class="gradient-text">more clarity.</span>
+          </h2>
+          <p class="muted mx-auto mt-5 max-w-xl text-sm leading-7 sm:text-base">
+            Explore the information available on DiFinance, take the time to understand
+            the terms, and make decisions that reflect your own goals and circumstances.
+          </p>
+          <div class="mt-8 flex flex-wrap justify-center gap-3">
+            <a href="./index.html#plans" class="primary-btn">
+              Explore Investment Plans <span aria-hidden="true">↗</span>
+            </a>
+            <a href="./index.html#faq" class="outline-btn">Read the FAQ</a>
+          </div>
+          <p class="muted mt-6 text-xs leading-5">
+            Take your time. Understand the risks. Decide when you're ready.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer: align copy and links with the existing homepage before publishing -->
+  <footer class="border-t border-slate-800/70 bg-slate-950/30">
+    <div class="mx-auto max-w-7xl px-5 py-12 lg:px-8 lg:py-14">
+      <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+        <div class="lg:col-span-1">
+          <a href="./index.html" class="text-xl font-extrabold tracking-tight text-white">
+            DaiFinance<span class="text-emerald-400">.</span>
+          </a>
+          <p class="muted mt-4 max-w-xs text-sm leading-7">
+            A considered approach to financial information, investment choices, and
+            understanding risk.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-sm font-semibold text-white">Explore</h2>
+          <ul class="mt-4 space-y-3 text-sm">
+            <li><a class="footer-link" href="./about.html">About Us</a></li>
+            <li><a class="footer-link" href="./index.html#services">Services</a></li>
+            <li><a class="footer-link" href="./index.html#plans">Investment Plans</a></li>
+            <li><a class="footer-link" href="./index.html#faq">Frequently Asked Questions</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="text-sm font-semibold text-white">Your account</h2>
+          <ul class="mt-4 space-y-3 text-sm">
+            <li><a class="footer-link" href="./login.html">Sign In</a></li>
+            <li><a class="footer-link" href="./register.html">Create Account</a></li>
+            <li><a class="footer-link" href="./index.html#support">Contact / Support</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="text-sm font-semibold text-white">Important information</h2>
+          <ul class="mt-4 space-y-3 text-sm">
+            <li><a class="footer-link" href="./privacy.html">Privacy Policy</a></li>
+            <li><a class="footer-link" href="./terms.html">Terms &amp; Conditions</a></li>
+            <li><a class="footer-link" href="./risk-disclosure.html">Risk Disclosure</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mt-10 border-t border-slate-800/70 pt-7">
+        <p class="muted text-xs leading-6">
+          <strong class="text-slate-300">Risk disclosure:</strong>
+          All investing involves risk, including the possible loss of principal.
+          Returns, where shown, may be hypothetical, illustrative, estimated, or based
+          on assumptions and may not reflect actual results. Past performance is not
+          a reliable indicator of future results. Diversification does not guarantee
+          profit or protect against loss. Investment availability, liquidity, fees,
+          eligibility, and applicable protections depend on the relevant product terms
+          and jurisdiction. Nothing on this page is a guarantee of performance or
+          individualized financial, tax, or legal advice. Verify the provider, offering
+          documents, and applicable regulatory status independently before transferring
+          money or making an investment decision.
+        </p>
+        <div class="mt-6 flex flex-col justify-between gap-3 text-xs muted sm:flex-row sm:items-center">
+          <p>© <span id="copyright-year">2026</span> DaiFinance. All rights reserved.</p>
+          <a href="#top" class="footer-link" onclick="window.scrollTo({top:0,behavior:'smooth'}); return false;">Back to top ↑</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (() => {
+      const toggle = document.getElementById("menu-toggle");
+      const menu = document.getElementById("mobile-menu");
+
+      if (toggle && menu) {
+        toggle.addEventListener("click", () => {
+          const isOpen = toggle.getAttribute("aria-expanded") === "true";
+          toggle.setAttribute("aria-expanded", String(!isOpen));
+          toggle.setAttribute("aria-label", isOpen
+            ? "Open navigation menu"
+            : "Close navigation menu");
+          menu.hidden = isOpen;
+        });
+
+        menu.querySelectorAll("a").forEach((link) => {
+          link.addEventListener("click", () => {
+            menu.hidden = true;
+            toggle.setAttribute("aria-expanded", "false");
+            toggle.setAttribute("aria-label", "Open navigation menu");
+          });
+        });
+
+        document.addEventListener("keydown", (event) => {
+          if (event.key === "Escape" && !menu.hidden) {
+            menu.hidden = true;
+            toggle.setAttribute("aria-expanded", "false");
+            toggle.setAttribute("aria-label", "Open navigation menu");
+            toggle.focus();
+          }
+        });
+      }
+
+      const year = document.getElementById("copyright-year");
+      if (year) year.textContent = new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>
