@@ -1,0 +1,1807 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0b0f19" />
+    <meta
+      name="description"
+      content="Optera Finance — explore investment strategies, diversified asset classes, and wealth management resources."
+    />
+    <title>Optera Finance — Wealth, With Intention</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              ink: "#0B0F19",
+              panel: "#111827",
+              emerald: "#10B981",
+              muted: "#94A3B8",
+            },
+            fontFamily: {
+              sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #0b0f19;
+        --panel: #111827;
+        --green: #10b981;
+        --line: rgba(148, 163, 184, 0.15);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 90px;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: #f8fafc;
+        font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+        overflow-x: hidden;
+      }
+
+      a,
+      button {
+        -webkit-tap-highlight-color: transparent;
+      }
+      button,
+      a {
+        transition:
+          color 0.2s ease,
+          background 0.2s ease,
+          border-color 0.2s ease,
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+
+      .site-bg {
+        background:
+          radial-gradient(
+            ellipse at 75% 8%,
+            rgba(16, 185, 129, 0.12),
+            transparent 32%
+          ),
+          radial-gradient(
+            ellipse at 10% 35%,
+            rgba(37, 99, 235, 0.07),
+            transparent 30%
+          ),
+          var(--bg);
+      }
+
+      .glass {
+        background: rgba(17, 24, 39, 0.72);
+        border: 1px solid var(--line);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+      }
+
+      .gradient-text {
+        color: #34d399;
+        background: linear-gradient(120deg, #6ee7b7, #10b981 55%, #059669);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .primary-btn {
+        background: linear-gradient(135deg, #10b981, #059669);
+        box-shadow: 0 8px 28px rgba(16, 185, 129, 0.15);
+      }
+      .primary-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 32px rgba(16, 185, 129, 0.3);
+      }
+
+      .outline-btn {
+        border: 1px solid rgba(148, 163, 184, 0.25);
+      }
+      .outline-btn:hover {
+        border-color: rgba(52, 211, 153, 0.6);
+        background: rgba(16, 185, 129, 0.06);
+      }
+
+      .feature-card,
+      .plan-card,
+      .review-card {
+        background: linear-gradient(
+          145deg,
+          rgba(17, 24, 39, 0.92),
+          rgba(15, 23, 42, 0.65)
+        );
+        border: 1px solid var(--line);
+        transition:
+          transform 0.25s ease,
+          border-color 0.25s ease,
+          box-shadow 0.25s ease;
+      }
+
+      .feature-card:hover,
+      .review-card:hover {
+        transform: translateY(-5px);
+        border-color: rgba(16, 185, 129, 0.45);
+        box-shadow: 0 18px 45px rgba(0, 0, 0, 0.2);
+      }
+
+      .plan-card:hover {
+        transform: translateY(-5px);
+      }
+      .popular-plan {
+        border: 1px solid transparent;
+        background:
+          linear-gradient(#101a25, #101a25) padding-box,
+          linear-gradient(145deg, #34d399, #059669, #2563eb) border-box;
+        box-shadow: 0 0 40px rgba(16, 185, 129, 0.09);
+      }
+
+      .eyebrow {
+        color: #6ee7b7;
+        font-size: 0.73rem;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .section-space {
+        padding-top: 96px;
+        padding-bottom: 96px;
+      }
+      .section-heading {
+        font-size: clamp(2rem, 4vw, 3.2rem);
+        line-height: 1.12;
+        letter-spacing: -0.045em;
+      }
+      .muted {
+        color: #94a3b8;
+      }
+
+      .icon-box {
+        display: grid;
+        place-items: center;
+        width: 46px;
+        height: 46px;
+        border: 1px solid rgba(16, 185, 129, 0.2);
+        border-radius: 14px;
+        background: rgba(16, 185, 129, 0.09);
+        color: #6ee7b7;
+        font-size: 1.25rem;
+      }
+
+      .asset-tab[aria-selected="true"] {
+        color: #6ee7b7;
+        border-color: rgba(16, 185, 129, 0.6);
+        background: rgba(16, 185, 129, 0.1);
+      }
+
+      .chart-grid {
+        background-image:
+          linear-gradient(rgba(148, 163, 184, 0.07) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(148, 163, 184, 0.07) 1px, transparent 1px);
+        background-size: 34px 34px;
+      }
+
+      .faq-item {
+        border-bottom: 1px solid var(--line);
+      }
+      .faq-answer {
+        display: none;
+      }
+      .faq-item.open .faq-answer {
+        display: block;
+      }
+      .faq-item.open .faq-chevron {
+        transform: rotate(180deg);
+      }
+
+      .ticker-track {
+        display: flex;
+        gap: 28px;
+        width: max-content;
+        animation: ticker 32s linear infinite;
+      }
+      .ticker-window:hover .ticker-track {
+        animation-play-state: paused;
+      }
+      @keyframes ticker {
+        from {
+          transform: translateX(0);
+        }
+        to {
+          transform: translateX(-50%);
+        }
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(16px);
+        transition:
+          opacity 0.65s ease,
+          transform 0.65s ease;
+      }
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .pulse-dot {
+        display: inline-block;
+        width: 7px;
+        height: 7px;
+        background: #34d399;
+        border-radius: 50%;
+        box-shadow: 0 0 12px rgba(52, 211, 153, 0.6);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          scroll-behavior: auto !important;
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+        .reveal {
+          opacity: 1;
+          transform: none;
+        }
+      }
+
+      @media (max-width: 767px) {
+        .section-space {
+          padding-top: 68px;
+          padding-bottom: 68px;
+        }
+        .ticker-track {
+          animation-duration: 24s;
+        }
+      }
+    </style>
+  </head>
+
+  <body class="site-bg antialiased">
+    <!-- Navigation -->
+    <header
+      class="fixed inset-x-0 top-0 z-50 border-b border-white/[0.06] bg-[#0b0f19]/85 backdrop-blur-xl"
+    >
+      <nav
+        class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-8"
+        aria-label="Main navigation"
+      >
+        <a
+          href="#home"
+          class="flex items-center gap-3"
+          aria-label="Optera Finance home"
+        >
+          <span
+            class="grid h-10 w-10 place-items-center rounded-xl bg-gradient-to-br from-emerald-300 to-emerald-700 text-lg font-black text-slate-950 shadow-lg shadow-emerald-900/30"
+            >O</span
+          >
+          <span class="text-xl font-bold tracking-tight"
+            >DaiFinance<span class="text-emerald-400">.</span></span
+          >
+        </a>
+
+        <div class="hidden items-center gap-7 text-sm text-slate-300 lg:flex">
+          <a class="hover:text-emerald-300" href="#services">Services</a>
+          <a class="hover:text-emerald-300" href="#plans">Investment Plans</a>
+          <a class="hover:text-emerald-300" href="#portfolio">Portfolio</a>
+          <a class="hover:text-emerald-300" href="#security">Security</a>
+          <a class="hover:text-emerald-300" href="#faq">FAQ</a>
+        </div>
+
+        <div class="hidden items-center gap-3 lg:flex">
+          <a
+            href="#signin"
+            class="outline-btn rounded-xl px-5 py-2.5 text-sm font-semibold"
+            >Sign In</a
+          >
+          <a
+            href="#plans"
+            class="primary-btn rounded-xl px-5 py-2.5 text-sm font-bold text-slate-950"
+            >Create Account</a
+          >
+        </div>
+
+        <button
+          id="menu-toggle"
+          class="outline-btn grid h-11 w-11 place-items-center rounded-xl text-xl lg:hidden"
+          aria-label="Open navigation menu"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+        >
+          <span id="menu-icon" aria-hidden="true">☰</span>
+        </button>
+      </nav>
+
+      <div
+        id="mobile-menu"
+        class="hidden border-t border-white/[0.06] bg-[#0b0f19]/95 px-5 pb-5 pt-3 lg:hidden"
+      >
+        <div class="flex flex-col gap-1 text-sm text-slate-300">
+          <a class="rounded-lg px-3 py-3 hover:bg-white/5" href="#services"
+            >Services</a
+          >
+          <a class="rounded-lg px-3 py-3 hover:bg-white/5" href="#plans"
+            >Investment Plans</a
+          >
+          <a class="rounded-lg px-3 py-3 hover:bg-white/5" href="#portfolio"
+            >Portfolio</a
+          >
+          <a class="rounded-lg px-3 py-3 hover:bg-white/5" href="#security"
+            >Security</a
+          >
+          <a class="rounded-lg px-3 py-3 hover:bg-white/5" href="#faq">FAQ</a>
+          <div class="mt-3 grid grid-cols-2 gap-3">
+            <a
+              href="#signin"
+              class="outline-btn rounded-xl px-4 py-3 text-center font-semibold"
+              >Sign In</a
+            >
+            <a
+              href="#plans"
+              class="primary-btn rounded-xl px-4 py-3 text-center font-bold text-slate-950"
+              >Get Started</a
+            >
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main id="home">
+      <!-- Hero -->
+      <section
+        class="relative overflow-hidden px-5 pb-16 pt-36 sm:pt-40 lg:px-8 lg:pb-20 lg:pt-48"
+      >
+        <div
+          class="pointer-events-none absolute left-1/2 top-20 h-96 w-96 -translate-x-1/2 rounded-full bg-emerald-500/[0.08] blur-[120px]"
+        ></div>
+        <div
+          class="relative mx-auto grid max-w-7xl items-center gap-14 lg:grid-cols-[1.05fr_.95fr]"
+        >
+          <div class="reveal">
+            <div
+              class="mb-7 inline-flex items-center gap-2 rounded-full border border-emerald-400/20 bg-emerald-400/[0.07] px-4 py-2 text-xs font-medium text-emerald-200"
+            >
+              <span class="pulse-dot"></span> A clearer perspective on investing
+            </div>
+
+            <h1
+              class="max-w-3xl text-4xl font-semibold leading-[1.08] tracking-[-.055em] sm:text-5xl lg:text-7xl"
+            >
+              Where Capital Meets <span class="gradient-text">Conviction.</span>
+            </h1>
+
+            <p
+              class="mt-6 max-w-xl text-base leading-8 text-slate-400 sm:text-lg"
+            >
+              Grow your wealth with precision and confidence. Explore
+              diversified investment strategies, transparent information, and
+              tools designed to help you make more informed financial decisions.
+            </p>
+
+            <div class="mt-9 flex flex-col gap-3 sm:flex-row">
+              <a
+                href="#plans"
+                class="primary-btn inline-flex items-center justify-center gap-2 rounded-xl px-6 py-4 text-sm font-bold text-slate-950"
+              >
+                Explore Investment Plans <span aria-hidden="true">↗</span>
+              </a>
+              <a
+                href="#portfolio"
+                class="outline-btn inline-flex items-center justify-center rounded-xl px-6 py-4 text-sm font-semibold text-white"
+              >
+                Explore Asset Classes
+              </a>
+            </div>
+
+            <div
+              class="mt-9 flex flex-wrap items-center gap-x-5 gap-y-3 text-xs text-slate-500"
+            >
+              <span class="flex items-center gap-2"
+                ><span class="text-emerald-400">✓</span> Risk-aware
+                education</span
+              >
+              <span class="flex items-center gap-2"
+                ><span class="text-emerald-400">✓</span> Transparent
+                information</span
+              >
+              <span class="flex items-center gap-2"
+                ><span class="text-emerald-400">✓</span> Security-conscious
+                design</span
+              >
+            </div>
+          </div>
+
+          <!-- Illustrative dashboard -->
+          <div class="reveal relative">
+            <div
+              class="absolute -inset-4 rounded-[2rem] bg-emerald-500/[0.06] blur-2xl"
+            ></div>
+            <div
+              class="glass relative rounded-3xl p-5 shadow-2xl shadow-black/30 sm:p-7"
+            >
+              <div class="flex items-start justify-between gap-4">
+                <div>
+                  <p class="text-sm text-slate-400">Portfolio overview</p>
+                  <p class="mt-2 text-3xl font-semibold tracking-tight">
+                    $128,450.80
+                  </p>
+                  <p class="mt-2 text-xs text-slate-500">
+                    Illustrative dashboard balance
+                  </p>
+                </div>
+                <span
+                  class="rounded-lg border border-emerald-400/20 bg-emerald-400/10 px-3 py-2 text-xs font-semibold text-emerald-300"
+                  >DEMO</span
+                >
+              </div>
+
+              <div
+                class="chart-grid mt-7 overflow-hidden rounded-2xl border border-white/[0.05] p-3"
+              >
+                <svg
+                  viewBox="0 0 520 210"
+                  class="h-auto w-full"
+                  role="img"
+                  aria-label="Illustrative portfolio chart, not actual investment performance"
+                >
+                  <defs>
+                    <linearGradient id="areaFill" x1="0" y1="0" x2="0" y2="1">
+                      <stop
+                        offset="0%"
+                        stop-color="#10b981"
+                        stop-opacity=".30"
+                      />
+                      <stop
+                        offset="100%"
+                        stop-color="#10b981"
+                        stop-opacity="0"
+                      />
+                    </linearGradient>
+                  </defs>
+                  <path
+                    d="M0 170 C25 155 38 166 57 138 S90 145 115 118 S155 135 180 105 S220 123 244 83 S285 110 311 77 S350 90 378 57 S415 76 440 42 S486 55 520 22 L520 210 L0 210 Z"
+                    fill="url(#areaFill)"
+                  />
+                  <path
+                    d="M0 170 C25 155 38 166 57 138 S90 145 115 118 S155 135 180 105 S220 123 244 83 S285 110 311 77 S350 90 378 57 S415 76 440 42 S486 55 520 22"
+                    fill="none"
+                    stroke="#34d399"
+                    stroke-width="3"
+                    stroke-linecap="round"
+                  />
+                  <circle
+                    cx="520"
+                    cy="22"
+                    r="5"
+                    fill="#34d399"
+                    stroke="#0b0f19"
+                    stroke-width="3"
+                  />
+                </svg>
+                <div
+                  class="flex justify-between px-1 text-[10px] text-slate-500"
+                >
+                  <span>JAN</span><span>FEB</span><span>MAR</span
+                  ><span>APR</span><span>MAY</span><span>JUN</span>
+                </div>
+              </div>
+
+              <div class="mt-6 grid grid-cols-3 gap-3">
+                <div
+                  class="rounded-xl border border-white/[0.06] bg-white/[0.025] p-3"
+                >
+                  <p class="text-[11px] text-slate-500">Equities</p>
+                  <p class="mt-2 text-lg font-semibold">40%</p>
+                  <div class="mt-2 h-1 rounded-full bg-slate-700">
+                    <div class="h-1 w-[40%] rounded-full bg-emerald-400"></div>
+                  </div>
+                </div>
+                <div
+                  class="rounded-xl border border-white/[0.06] bg-white/[0.025] p-3"
+                >
+                  <p class="text-[11px] text-slate-500">Real assets</p>
+                  <p class="mt-2 text-lg font-semibold">35%</p>
+                  <div class="mt-2 h-1 rounded-full bg-slate-700">
+                    <div class="h-1 w-[35%] rounded-full bg-blue-400"></div>
+                  </div>
+                </div>
+                <div
+                  class="rounded-xl border border-white/[0.06] bg-white/[0.025] p-3"
+                >
+                  <p class="text-[11px] text-slate-500">Other</p>
+                  <p class="mt-2 text-lg font-semibold">25%</p>
+                  <div class="mt-2 h-1 rounded-full bg-slate-700">
+                    <div class="h-1 w-[25%] rounded-full bg-violet-400"></div>
+                  </div>
+                </div>
+              </div>
+              <p class="mt-4 text-[11px] leading-5 text-slate-500">
+                Illustrative interface only. Values and allocations are
+                fictional and do not represent actual client accounts or
+                returns.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Simulated ticker -->
+        <div
+          class="mx-auto mt-16 max-w-7xl overflow-hidden rounded-2xl border border-white/[0.07] bg-white/[0.02] py-4"
+        >
+          <div class="mb-3 flex items-center justify-between px-5">
+            <span
+              class="text-xs font-semibold uppercase tracking-wider text-slate-400"
+              >Market snapshot</span
+            >
+            <span class="text-[10px] text-amber-300"
+              >SIMULATED DATA · NOT LIVE</span
+            >
+          </div>
+          <div
+            class="ticker-window overflow-hidden"
+            aria-label="Simulated market prices"
+          >
+            <div class="ticker-track" id="ticker-track">
+              <div class="flex min-w-[150px] items-center gap-3 px-4">
+                <span class="text-sm font-semibold">XAU/USD</span
+                ><span class="text-sm text-slate-300">$2,350.20</span
+                ><span class="text-xs text-emerald-400">+0.42%</span>
+              </div>
+              <div class="flex min-w-[150px] items-center gap-3 px-4">
+                <span class="text-sm font-semibold">BTC/USD</span
+                ><span class="text-sm text-slate-300">$67,420.00</span
+                ><span class="text-xs text-emerald-400">+1.24%</span>
+              </div>
+              <div class="flex min-w-[150px] items-center gap-3 px-4">
+                <span class="text-sm font-semibold">S&amp;P 500</span
+                ><span class="text-sm text-slate-300">5,234.18</span
+                ><span class="text-xs text-rose-400">−0.18%</span>
+              </div>
+              <div class="flex min-w-[150px] items-center gap-3 px-4">
+                <span class="text-sm font-semibold">NASDAQ</span
+                ><span class="text-sm text-slate-300">16,428.82</span
+                ><span class="text-xs text-emerald-400">+0.35%</span>
+              </div>
+              <div class="flex min-w-[150px] items-center gap-3 px-4">
+                <span class="text-sm font-semibold">XAU/USD</span
+                ><span class="text-sm text-slate-300">$2,350.20</span
+                ><span class="text-xs text-emerald-400">+0.42%</span>
+              </div>
+              <div class="flex min-w-[150px] items-center gap-3 px-4">
+                <span class="text-sm font-semibold">BTC/USD</span
+                ><span class="text-sm text-slate-300">$67,420.00</span
+                ><span class="text-xs text-emerald-400">+1.24%</span>
+              </div>
+              <div class="flex min-w-[150px] items-center gap-3 px-4">
+                <span class="text-sm font-semibold">S&amp;P 500</span
+                ><span class="text-sm text-slate-300">5,234.18</span
+                ><span class="text-xs text-rose-400">−0.18%</span>
+              </div>
+              <div class="flex min-w-[150px] items-center gap-3 px-4">
+                <span class="text-sm font-semibold">NASDAQ</span
+                ><span class="text-sm text-slate-300">16,428.82</span
+                ><span class="text-xs text-emerald-400">+0.35%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="mx-auto mt-10 grid max-w-5xl grid-cols-1 gap-6 text-center sm:grid-cols-3"
+        >
+          <div>
+            <p class="text-3xl font-bold tracking-tight">
+              <span data-counter="250" data-suffix="M+">$250M+</span>
+            </p>
+            <p class="mt-2 text-sm text-slate-500">
+              Illustrative managed-asset metric
+            </p>
+          </div>
+          <div>
+            <p class="text-3xl font-bold tracking-tight">
+              <span data-counter="1000" data-suffix="+">1,000+</span>
+            </p>
+            <p class="mt-2 text-sm text-slate-500">
+              Illustrative investor count
+            </p>
+          </div>
+          <div>
+            <p class="text-3xl font-bold tracking-tight">
+              <span data-counter="45" data-suffix="%">45%</span>
+            </p>
+            <p class="mt-2 text-sm text-slate-500">
+              Example claim only — not a verified ROI
+            </p>
+          </div>
+        </div>
+        <p
+          class="mx-auto mt-5 max-w-3xl text-center text-xs leading-5 text-slate-600"
+        >
+          All market quotes and business metrics above are illustrative
+          placeholders. They are not live prices, verified assets under
+          management, actual customer counts, or a forecast of investment
+          performance.
+        </p>
+      </section>
+
+      <!-- Value propositions -->
+      <section
+        id="services"
+        class="section-space border-t border-white/[0.04] px-5 lg:px-8"
+      >
+        <div class="mx-auto max-w-7xl">
+          <div class="reveal mx-auto max-w-2xl text-center">
+            <p class="eyebrow">The Optera approach</p>
+            <h2 class="section-heading mt-4 font-semibold">
+              The smarter way to
+              <span class="gradient-text">think about wealth.</span>
+            </h2>
+            <p class="mt-5 leading-7 text-slate-400">
+              A strong financial foundation starts with clear information,
+              thoughtful planning, and an honest understanding of risk.
+            </p>
+          </div>
+
+          <div class="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <article class="feature-card reveal rounded-2xl p-6">
+              <div class="icon-box">⌑</div>
+              <h3 class="mt-5 text-lg font-semibold">Security by design</h3>
+              <p class="mt-3 text-sm leading-7 text-slate-400">
+                Build trust through sensible access controls, secure session
+                practices, and clear guidance on protecting personal
+                information.
+              </p>
+            </article>
+            <article class="feature-card reveal rounded-2xl p-6">
+              <div class="icon-box">↗</div>
+              <h3 class="mt-5 text-lg font-semibold">Long-term perspective</h3>
+              <p class="mt-3 text-sm leading-7 text-slate-400">
+                Explore the relationship between goals, time horizons,
+                diversification, and risk instead of relying on promises of
+                guaranteed gains.
+              </p>
+            </article>
+            <article class="feature-card reveal rounded-2xl p-6">
+              <div class="icon-box">◷</div>
+              <h3 class="mt-5 text-lg font-semibold">Support that listens</h3>
+              <p class="mt-3 text-sm leading-7 text-slate-400">
+                Make room for clear answers, useful educational resources, and
+                responsive assistance when questions come up.
+              </p>
+            </article>
+            <article class="feature-card reveal rounded-2xl p-6">
+              <div class="icon-box">◎</div>
+              <h3 class="mt-5 text-lg font-semibold">
+                Transparent information
+              </h3>
+              <p class="mt-3 text-sm leading-7 text-slate-400">
+                Understand fees, liquidity limits, investment terms, and the
+                risks that can affect your capital before making a decision.
+              </p>
+            </article>
+            <article class="feature-card reveal rounded-2xl p-6">
+              <div class="icon-box">⇄</div>
+              <h3 class="mt-5 text-lg font-semibold">Withdrawal clarity</h3>
+              <p class="mt-3 text-sm leading-7 text-slate-400">
+                Review withdrawal rules, settlement periods, and potential fees
+                upfront. Actual processing times depend on the provider and
+                product.
+              </p>
+            </article>
+            <article class="feature-card reveal rounded-2xl p-6">
+              <div class="icon-box">⌖</div>
+              <h3 class="mt-5 text-lg font-semibold">A global outlook</h3>
+              <p class="mt-3 text-sm leading-7 text-slate-400">
+                Learn how global markets, currency movements, regional
+                regulations, and economic cycles can shape investment decisions.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Plans -->
+      <section
+        id="plans"
+        class="section-space relative border-y border-white/[0.04] bg-white/[0.012] px-5 lg:px-8"
+      >
+        <div
+          class="pointer-events-none absolute left-1/2 top-1/4 h-72 w-72 -translate-x-1/2 rounded-full bg-emerald-500/[0.06] blur-[100px]"
+        ></div>
+        <div class="relative mx-auto max-w-7xl">
+          <div class="reveal mx-auto max-w-2xl text-center">
+            <p class="eyebrow">Investment options</p>
+            <h2 class="section-heading mt-4 font-semibold">
+              Choose your path to <span class="gradient-text">wealth.</span>
+            </h2>
+            <p class="mt-5 leading-7 text-slate-400">
+              Compare the example tiers below. The displayed percentages are
+              hypothetical design inputs, not promised, typical, or verified
+              returns.
+            </p>
+          </div>
+
+          <div class="mt-14 grid items-stretch gap-5 lg:grid-cols-3">
+            <article class="plan-card reveal flex flex-col rounded-3xl p-7">
+              <div class="flex items-center justify-between">
+                <h3 class="text-xl font-semibold">Basic</h3>
+                <span
+                  class="rounded-full bg-white/[0.06] px-3 py-1 text-xs text-slate-400"
+                  >Starter</span
+                >
+              </div>
+              <p class="mt-3 text-sm leading-6 text-slate-400">
+                An example entry-level plan layout for getting familiar with the
+                platform.
+              </p>
+              <div class="mt-7">
+                <span class="text-4xl font-bold tracking-tight">1.50%</span
+                ><span class="text-sm text-slate-400"> / day*</span>
+              </div>
+              <p class="mt-2 text-xs text-slate-500">
+                Hypothetical rate shown for UI demonstration only
+              </p>
+              <div class="my-7 h-px bg-white/[0.08]"></div>
+              <ul class="flex-1 space-y-4 text-sm text-slate-300">
+                <li class="flex gap-3">
+                  <span class="text-emerald-400">✓</span> Example 30-day term
+                </li>
+                <li class="flex gap-3">
+                  <span class="text-emerald-400">✓</span> Illustrative minimum:
+                  $100
+                </li>
+                <li class="flex gap-3">
+                  <span class="text-emerald-400">✓</span> Withdrawal terms
+                  require confirmation
+                </li>
+                <li class="flex gap-3">
+                  <span class="text-emerald-400">✓</span> Risk and fee
+                  disclosures
+                </li>
+              </ul>
+              <a
+                href="#risk-notice"
+                class="outline-btn mt-8 block rounded-xl px-5 py-3.5 text-center text-sm font-semibold"
+                >Review Details</a
+              >
+            </article>
+
+            <article
+              class="plan-card popular-plan reveal relative flex flex-col rounded-3xl p-7"
+            >
+              <div
+                class="absolute -top-3 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-gradient-to-r from-emerald-300 to-emerald-600 px-4 py-1.5 text-[11px] font-bold uppercase tracking-wider text-slate-950"
+              >
+                Popular example
+              </div>
+              <div class="mt-2 flex items-center justify-between">
+                <h3 class="text-xl font-semibold">Silver</h3>
+                <span
+                  class="rounded-full bg-emerald-400/10 px-3 py-1 text-xs text-emerald-300"
+                  >Plus</span
+                >
+              </div>
+              <p class="mt-3 text-sm leading-6 text-slate-400">
+                A mid-tier concept for comparing example features and investment
+                terms.
+              </p>
+              <div class="mt-7">
+                <span class="gradient-text text-4xl font-bold tracking-tight"
+                  >1.80%</span
+                ><span class="text-sm text-slate-400"> / day*</span>
+              </div>
+              <p class="mt-2 text-xs text-slate-500">
+                Hypothetical rate shown for UI demonstration only
+              </p>
+              <div class="my-7 h-px bg-white/[0.08]"></div>
+              <ul class="flex-1 space-y-4 text-sm text-slate-300">
+                <li class="flex gap-3">
+                  <span class="text-emerald-400">✓</span> Example 30-day term
+                </li>
+                <li class="flex gap-3">
+                  <span class="text-emerald-400">✓</span> Illustrative minimum:
+                  $1,000
+                </li>
+                <li class="flex gap-3">
+                  <span class="text-emerald-400">✓</span> Withdrawal terms
+                  require confirmation
+                </li>
+                <li class="flex gap-3">
+                  <span class="text-emerald-400">✓</span> Risk and fee
+                  disclosures
+                </li>
+              </ul>
+              <a
+                href="#risk-notice"
+                class="primary-btn mt-8 block rounded-xl px-5 py-3.5 text-center text-sm font-bold text-slate-950"
+                >Review Details</a
+              >
+            </article>
+
+            <article class="plan-card reveal flex flex-col rounded-3xl p-7">
+              <div class="flex items-center justify-between">
+                <h3 class="text-xl font-semibold">Diamond</h3>
+                <span
+                  class="rounded-full bg-white/[0.06] px-3 py-1 text-xs text-slate-400"
+                  >Advanced</span
+                >
+              </div>
+              <p class="mt-3 text-sm leading-6 text-slate-400">
+                An example higher-tier concept for users comparing more
+                substantial commitments.
+              </p>
+              <div class="mt-7">
+                <span class="text-4xl font-bold tracking-tight">2.10%</span
+                ><span class="text-sm text-slate-400"> / day*</span>
+              </div>
+              <p class="mt-2 text-xs text-slate-500">
+                Hypothetical rate shown for UI demonstration only
+              </p>
+              <div class="my-7 h-px bg-white/[0.08]"></div>
+              <ul class="flex-1 space-y-4 text-sm text-slate-300">
+                <li class="flex gap-3">
+                  <span class="text-emerald-400">✓</span> Example 30-day term
+                </li>
+                <li class="flex gap-3">
+                  <span class="text-emerald-400">✓</span> Illustrative minimum:
+                  $5,000
+                </li>
+                <li class="flex gap-3">
+                  <span class="text-emerald-400">✓</span> Withdrawal terms
+                  require confirmation
+                </li>
+                <li class="flex gap-3">
+                  <span class="text-emerald-400">✓</span> Risk and fee
+                  disclosures
+                </li>
+              </ul>
+              <a
+                href="#risk-notice"
+                class="outline-btn mt-8 block rounded-xl px-5 py-3.5 text-center text-sm font-semibold"
+                >Review Details</a
+              >
+            </article>
+          </div>
+
+          <p
+            id="risk-notice"
+            class="mx-auto mt-8 max-w-4xl text-center text-xs leading-6 text-slate-500"
+          >
+            *These daily percentages, minimum deposits, and 30-day terms are
+            illustrative placeholders requested for the design. They are not
+            evidence of an available financial product or a realistic/achievable
+            rate of return. Daily returns of this size would be exceptionally
+            high and warrant careful independent scrutiny. Investment can result
+            in partial or total loss of capital. No guaranteed returns, instant
+            withdrawals, or actual account opening are represented by these demo
+            cards.
+          </p>
+        </div>
+      </section>
+
+      <!-- Portfolio tabs -->
+      <section id="portfolio" class="section-space px-5 lg:px-8">
+        <div class="mx-auto max-w-7xl">
+          <div class="reveal max-w-2xl">
+            <p class="eyebrow">Explore asset classes</p>
+            <h2 class="section-heading mt-4 font-semibold">
+              Diversification starts with
+              <span class="gradient-text">understanding.</span>
+            </h2>
+            <p class="mt-5 leading-7 text-slate-400">
+              Explore the basics of different markets, their potential roles,
+              and the risks worth considering before investing.
+            </p>
+          </div>
+
+          <div
+            class="mt-10 flex flex-wrap gap-2"
+            role="tablist"
+            aria-label="Investment asset classes"
+          >
+            <button
+              class="asset-tab rounded-xl border border-white/10 px-4 py-3 text-sm text-slate-300"
+              role="tab"
+              aria-selected="true"
+              aria-controls="asset-panel"
+              data-asset="realestate"
+            >
+              Real Estate
+            </button>
+            <button
+              class="asset-tab rounded-xl border border-white/10 px-4 py-3 text-sm text-slate-300"
+              role="tab"
+              aria-selected="false"
+              aria-controls="asset-panel"
+              data-asset="forex"
+            >
+              Forex
+            </button>
+            <button
+              class="asset-tab rounded-xl border border-white/10 px-4 py-3 text-sm text-slate-300"
+              role="tab"
+              aria-selected="false"
+              aria-controls="asset-panel"
+              data-asset="crypto"
+            >
+              Crypto
+            </button>
+            <button
+              class="asset-tab rounded-xl border border-white/10 px-4 py-3 text-sm text-slate-300"
+              role="tab"
+              aria-selected="false"
+              aria-controls="asset-panel"
+              data-asset="energy"
+            >
+              Oil &amp; Energy
+            </button>
+            <button
+              class="asset-tab rounded-xl border border-white/10 px-4 py-3 text-sm text-slate-300"
+              role="tab"
+              aria-selected="false"
+              aria-controls="asset-panel"
+              data-asset="agriculture"
+            >
+              Agriculture
+            </button>
+            <button
+              class="asset-tab rounded-xl border border-white/10 px-4 py-3 text-sm text-slate-300"
+              role="tab"
+              aria-selected="false"
+              aria-controls="asset-panel"
+              data-asset="gold"
+            >
+              Gold
+            </button>
+          </div>
+
+          <div
+            id="asset-panel"
+            class="glass reveal mt-5 grid overflow-hidden rounded-3xl lg:grid-cols-2"
+            role="tabpanel"
+            tabindex="0"
+          >
+            <div class="p-7 sm:p-10">
+              <span class="eyebrow" id="asset-kicker">REAL ASSETS</span>
+              <h3
+                id="asset-title"
+                class="mt-4 text-3xl font-semibold tracking-tight"
+              >
+                Real Estate
+              </h3>
+              <p
+                id="asset-description"
+                class="mt-4 max-w-lg leading-7 text-slate-400"
+              >
+                Property investments may offer rental income and long-term
+                appreciation, but they can involve substantial capital
+                requirements, maintenance costs, valuation uncertainty, and
+                limited liquidity.
+              </p>
+              <div class="mt-7">
+                <p class="text-xs uppercase tracking-wider text-slate-500">
+                  Consider before investing
+                </p>
+                <ul
+                  id="asset-risks"
+                  class="mt-3 space-y-3 text-sm text-slate-300"
+                >
+                  <li>• Location and property quality</li>
+                  <li>• Vacancy, maintenance, and financing costs</li>
+                  <li>• Liquidity and local market conditions</li>
+                </ul>
+              </div>
+            </div>
+
+            <div
+              class="chart-grid flex min-h-[300px] flex-col justify-between border-t border-white/[0.06] p-7 lg:border-l lg:border-t-0 sm:p-10"
+            >
+              <div class="flex items-start justify-between">
+                <div>
+                  <p class="text-sm text-slate-400">Market education widget</p>
+                  <p id="asset-symbol" class="mt-2 text-2xl font-semibold">
+                    PROPERTY
+                  </p>
+                </div>
+                <span
+                  class="rounded-full border border-amber-300/20 bg-amber-300/[0.06] px-3 py-1.5 text-[10px] font-semibold text-amber-200"
+                  >ILLUSTRATIVE</span
+                >
+              </div>
+              <svg
+                id="asset-chart"
+                viewBox="0 0 500 150"
+                class="mt-8 w-full"
+                role="img"
+                aria-label="Illustrative asset trend, not actual market data"
+              >
+                <path
+                  d="M0 120 L35 103 L70 110 L105 78 L140 91 L175 62 L210 72 L245 45 L280 58 L315 37 L350 52 L385 27 L420 39 L460 18 L500 25"
+                  fill="none"
+                  stroke="#34d399"
+                  stroke-width="3"
+                  stroke-linejoin="round"
+                  stroke-linecap="round"
+                />
+              </svg>
+              <div
+                class="mt-4 flex items-center justify-between gap-3 text-xs text-slate-500"
+              >
+                <span>Illustrative trend only</span
+                ><span id="asset-period">Example view · 12 months</span>
+              </div>
+              <p class="mt-4 text-xs leading-5 text-slate-500">
+                No actual price feed is connected. The chart is a visual
+                placeholder, not investment advice or a performance record.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Security -->
+      <section
+        id="security"
+        class="section-space border-y border-white/[0.04] bg-white/[0.012] px-5 lg:px-8"
+      >
+        <div class="mx-auto max-w-7xl">
+          <div class="reveal mx-auto max-w-2xl text-center">
+            <p class="eyebrow">Trust is earned</p>
+            <h2 class="section-heading mt-4 font-semibold">
+              Security isn't a slogan.
+              <span class="gradient-text">It's a standard.</span>
+            </h2>
+            <p class="mt-5 leading-7 text-slate-400">
+              Understand the protections a financial platform should document
+              and verify before you trust it with your money or personal data.
+            </p>
+          </div>
+
+          <div class="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <article class="feature-card reveal rounded-2xl p-6 text-center">
+              <div class="icon-box mx-auto">⌑</div>
+              <p
+                class="mt-5 text-3xl font-bold"
+                data-counter="256"
+                data-suffix="-bit"
+              >
+                256-bit
+              </p>
+              <h3 class="mt-2 font-semibold">Encryption</h3>
+              <p class="mt-2 text-xs leading-5 text-slate-500">
+                Example specification; actual implementation must be verified.
+              </p>
+            </article>
+            <article class="feature-card reveal rounded-2xl p-6 text-center">
+              <div class="icon-box mx-auto">▣</div>
+              <p
+                class="mt-5 text-3xl font-bold"
+                data-counter="95"
+                data-suffix="%"
+              >
+                95%
+              </p>
+              <h3 class="mt-2 font-semibold">Cold storage</h3>
+              <p class="mt-2 text-xs leading-5 text-slate-500">
+                Illustrative target only; custody arrangements are not verified.
+              </p>
+            </article>
+            <article class="feature-card reveal rounded-2xl p-6 text-center">
+              <div class="icon-box mx-auto">◷</div>
+              <p
+                class="mt-5 text-3xl font-bold"
+                data-counter="4"
+                data-suffix="/year"
+              >
+                4/year
+              </p>
+              <h3 class="mt-2 font-semibold">Security audits</h3>
+              <p class="mt-2 text-xs leading-5 text-slate-500">
+                Quarterly is an example schedule, not an attested audit record.
+              </p>
+            </article>
+            <article class="feature-card reveal rounded-2xl p-6 text-center">
+              <div class="icon-box mx-auto">◇</div>
+              <p
+                class="mt-5 text-3xl font-bold"
+                data-counter="50"
+                data-prefix="$"
+                data-suffix="M"
+              >
+                $50M
+              </p>
+              <h3 class="mt-2 font-semibold">Insurance coverage</h3>
+              <p class="mt-2 text-xs leading-5 text-slate-500">
+                Placeholder claim. No insurance policy or coverage is
+                represented as verified.
+              </p>
+            </article>
+          </div>
+
+          <div
+            class="glass reveal mt-8 flex flex-col gap-4 rounded-2xl p-6 sm:flex-row sm:items-center sm:justify-between"
+          >
+            <div>
+              <h3 class="font-semibold">Verify before you invest</h3>
+              <p class="mt-2 max-w-2xl text-sm leading-6 text-slate-400">
+                Check the legal entity, regulatory register, custody
+                arrangements, audit reports, insurance exclusions, and
+                withdrawal terms independently.
+              </p>
+            </div>
+            <a
+              href="#faq"
+              class="outline-btn shrink-0 rounded-xl px-5 py-3 text-center text-sm font-semibold"
+              >Read the FAQ</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- Testimonials -->
+      <section id="testimonials" class="section-space px-5 lg:px-8">
+        <div class="mx-auto max-w-7xl">
+          <div
+            class="reveal flex flex-col justify-between gap-5 md:flex-row md:items-end"
+          >
+            <div>
+              <p class="eyebrow">The investor experience</p>
+              <h2 class="section-heading mt-4 font-semibold">
+                Clarity makes a <span class="gradient-text">difference.</span>
+              </h2>
+            </div>
+            <p class="max-w-md text-sm leading-7 text-slate-400">
+              Example testimonial layouts for the future. Replace these with
+              genuine, authorized customer feedback before publishing.
+            </p>
+          </div>
+
+          <div class="mt-12 grid gap-4 md:grid-cols-3">
+            <article class="review-card reveal rounded-2xl p-6">
+              <div
+                class="text-sm tracking-[.2em] text-emerald-300"
+                aria-label="Five illustrative stars"
+              >
+                ★★★★★
+              </div>
+              <blockquote class="mt-5 text-base leading-7 text-slate-200">
+                “The information is organized in a way that makes comparing
+                different investment concepts feel less overwhelming.”
+              </blockquote>
+              <div class="mt-7 flex items-center gap-3">
+                <div
+                  class="grid h-10 w-10 place-items-center rounded-full bg-emerald-400/10 font-semibold text-emerald-300"
+                >
+                  AM
+                </div>
+                <div>
+                  <p class="text-sm font-semibold">Alex Morgan</p>
+                  <p class="text-xs text-slate-500">Illustrative profile</p>
+                </div>
+              </div>
+            </article>
+            <article class="review-card reveal rounded-2xl p-6">
+              <div
+                class="text-sm tracking-[.2em] text-emerald-300"
+                aria-label="Five illustrative stars"
+              >
+                ★★★★★
+              </div>
+              <blockquote class="mt-5 text-base leading-7 text-slate-200">
+                “I want to understand the fees, the risks, and the terms before
+                committing capital. That should always come first.”
+              </blockquote>
+              <div class="mt-7 flex items-center gap-3">
+                <div
+                  class="grid h-10 w-10 place-items-center rounded-full bg-blue-400/10 font-semibold text-blue-300"
+                >
+                  JL
+                </div>
+                <div>
+                  <p class="text-sm font-semibold">Jordan Lee</p>
+                  <p class="text-xs text-slate-500">Illustrative profile</p>
+                </div>
+              </div>
+            </article>
+            <article class="review-card reveal rounded-2xl p-6">
+              <div
+                class="text-sm tracking-[.2em] text-emerald-300"
+                aria-label="Five illustrative stars"
+              >
+                ★★★★★
+              </div>
+              <blockquote class="mt-5 text-base leading-7 text-slate-200">
+                “A thoughtful financial decision takes research and patience.
+                Clear explanations help me ask better questions.”
+              </blockquote>
+              <div class="mt-7 flex items-center gap-3">
+                <div
+                  class="grid h-10 w-10 place-items-center rounded-full bg-violet-400/10 font-semibold text-violet-300"
+                >
+                  SK
+                </div>
+                <div>
+                  <p class="text-sm font-semibold">Samira Khan</p>
+                  <p class="text-xs text-slate-500">Illustrative profile</p>
+                </div>
+              </div>
+            </article>
+          </div>
+          <p class="mt-4 text-center text-xs text-slate-600">
+            These testimonials and profiles are fictional examples, not
+            endorsements or statements from actual customers.
+          </p>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section
+        id="faq"
+        class="section-space border-t border-white/[0.04] bg-white/[0.012] px-5 lg:px-8"
+      >
+        <div class="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[.8fr_1.2fr]">
+          <div class="reveal">
+            <p class="eyebrow">Questions, answered</p>
+            <h2 class="section-heading mt-4 font-semibold">
+              Good decisions start with
+              <span class="gradient-text">good questions.</span>
+            </h2>
+            <p class="mt-5 max-w-md leading-7 text-slate-400">
+              Take a moment to understand the essentials. If something about an
+              investment sounds too good to be true, check it out before sending
+              money.
+            </p>
+            <a
+              href="mailto:support@davault.com"
+              class="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-emerald-300 hover:text-emerald-200"
+              >Contact support <span aria-hidden="true">↗</span></a
+            >
+          </div>
+
+          <div class="reveal">
+            <div class="faq-item open">
+              <button
+                class="faq-question flex w-full items-center justify-between gap-4 py-5 text-left"
+                aria-expanded="true"
+              >
+                <span class="font-medium">What is Optera Finance?</span
+                ><span class="faq-chevron text-xl text-emerald-300">⌄</span>
+              </button>
+              <div class="faq-answer pb-5 text-sm leading-7 text-slate-400">
+                This page is a front-end demonstration for a wealth management
+                concept. It does not establish that a real investment business,
+                brokerage service, or regulated financial product is operating.
+                Verify the legal entity and services before relying on any
+                platform using this design.
+              </div>
+            </div>
+            <div class="faq-item">
+              <button
+                class="faq-question flex w-full items-center justify-between gap-4 py-5 text-left"
+                aria-expanded="false"
+              >
+                <span class="font-medium"
+                  >Are the daily returns shown guaranteed?</span
+                ><span class="faq-chevron text-xl text-emerald-300">⌄</span>
+              </button>
+              <div class="faq-answer pb-5 text-sm leading-7 text-slate-400">
+                No. The displayed daily percentages are hypothetical design
+                placeholders, not verified offers or realistic expectations. No
+                investment return is guaranteed by this page. Very high
+                daily-return promises deserve exceptional scrutiny, and you
+                should be prepared for the possibility of losing your capital.
+              </div>
+            </div>
+            <div class="faq-item">
+              <button
+                class="faq-question flex w-full items-center justify-between gap-4 py-5 text-left"
+                aria-expanded="false"
+              >
+                <span class="font-medium"
+                  >How do I know a platform is legitimate?</span
+                ><span class="faq-chevron text-xl text-emerald-300">⌄</span>
+              </button>
+              <div class="faq-answer pb-5 text-sm leading-7 text-slate-400">
+                Verify the exact legal company name, registration details, and
+                regulatory authorization with the relevant official regulator.
+                Independently confirm the custodian, audit reports, fees,
+                withdrawal rules, and any claimed insurance. Do not rely solely
+                on website badges or testimonials.
+              </div>
+            </div>
+            <div class="faq-item">
+              <button
+                class="faq-question flex w-full items-center justify-between gap-4 py-5 text-left"
+                aria-expanded="false"
+              >
+                <span class="font-medium">Can I withdraw funds instantly?</span
+                ><span class="faq-chevron text-xl text-emerald-300">⌄</span>
+              </button>
+              <div class="faq-answer pb-5 text-sm leading-7 text-slate-400">
+                Withdrawal availability depends on the actual product,
+                settlement periods, identity checks, liquidity, and applicable
+                rules. No instant-withdrawal feature is connected or verified in
+                this demo. Read the contract and withdrawal policy before
+                depositing funds.
+              </div>
+            </div>
+            <div class="faq-item">
+              <button
+                class="faq-question flex w-full items-center justify-between gap-4 py-5 text-left"
+                aria-expanded="false"
+              >
+                <span class="font-medium">Are the market prices live?</span
+                ><span class="faq-chevron text-xl text-emerald-300">⌄</span>
+              </button>
+              <div class="faq-answer pb-5 text-sm leading-7 text-slate-400">
+                No. The ticker and chart use static illustrative values. A
+                production implementation would need a licensed or otherwise
+                authorized market-data provider, clear timestamps, error
+                handling, and appropriate display permissions.
+              </div>
+            </div>
+            <div class="faq-item">
+              <button
+                class="faq-question flex w-full items-center justify-between gap-4 py-5 text-left"
+                aria-expanded="false"
+              >
+                <span class="font-medium"
+                  >Does this page create an investment account?</span
+                ><span class="faq-chevron text-xl text-emerald-300">⌄</span>
+              </button>
+              <div class="faq-answer pb-5 text-sm leading-7 text-slate-400">
+                No. Navigation and CTA buttons are demonstration links.
+                Registration, authentication, KYC, payments, account balances,
+                and withdrawals require a secure backend, appropriate compliance
+                processes, and tested integrations before launch.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="px-5 py-20 lg:px-8">
+        <div
+          class="relative mx-auto max-w-7xl overflow-hidden rounded-3xl border border-emerald-400/20 bg-gradient-to-br from-emerald-500/[0.13] via-slate-900/70 to-blue-500/[0.06] p-8 sm:p-12 lg:p-16"
+        >
+          <div
+            class="pointer-events-none absolute -right-12 -top-24 h-72 w-72 rounded-full bg-emerald-400/[0.12] blur-[90px]"
+          ></div>
+          <div
+            class="relative flex flex-col items-start justify-between gap-8 md:flex-row md:items-center"
+          >
+            <div class="max-w-2xl">
+              <p class="eyebrow">Your next step</p>
+              <h2
+                class="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl"
+              >
+                Make informed decisions.
+                <span class="gradient-text">Build with purpose.</span>
+              </h2>
+              <p class="mt-4 leading-7 text-slate-400">
+                Explore the fundamentals, review the risks, and take the time to
+                understand every term before committing your money.
+              </p>
+            </div>
+            <a
+              href="#portfolio"
+              class="primary-btn inline-flex shrink-0 items-center gap-2 rounded-xl px-6 py-4 text-sm font-bold text-slate-950"
+              >Explore Markets <span aria-hidden="true">↗</span></a
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer
+      class="border-t border-white/[0.07] bg-[#080b12] px-5 pb-8 pt-14 lg:px-8"
+    >
+      <div class="mx-auto max-w-7xl">
+        <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-5">
+          <div class="lg:col-span-2">
+            <a href="#home" class="flex items-center gap-3"
+              ><span
+                class="grid h-10 w-10 place-items-center rounded-xl bg-gradient-to-br from-emerald-300 to-emerald-700 font-black text-slate-950"
+                >O</span
+              ><span class="text-xl font-bold"
+                >optera<span class="text-emerald-400">.</span></span
+              ></a
+            >
+            <p class="mt-5 max-w-sm text-sm leading-7 text-slate-500">
+              A modern wealth management design concept centered on clarity,
+              risk awareness, and informed financial choices.
+            </p>
+            <a
+              href="mailto:support@davault.com"
+              class="mt-5 inline-block text-sm text-emerald-300 hover:text-emerald-200"
+              >support@davault.com</a
+            >
+          </div>
+
+          <div>
+            <h3 class="text-sm font-semibold">Platform</h3>
+            <ul class="mt-5 space-y-3 text-sm text-slate-500">
+              <li>
+                <a class="hover:text-emerald-300" href="#services">Services</a>
+              </li>
+              <li>
+                <a class="hover:text-emerald-300" href="#plans"
+                  >Investment plans</a
+                >
+              </li>
+              <li>
+                <a class="hover:text-emerald-300" href="#portfolio"
+                  >Asset classes</a
+                >
+              </li>
+              <li>
+                <a class="hover:text-emerald-300" href="#security">Security</a>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-sm font-semibold">Resources</h3>
+            <ul class="mt-5 space-y-3 text-sm text-slate-500">
+              <li><a class="hover:text-emerald-300" href="#faq">FAQ</a></li>
+              <li>
+                <a class="hover:text-emerald-300" href="#risk-notice"
+                  >Risk disclosure</a
+                >
+              </li>
+              <li>
+                <a
+                  class="hover:text-emerald-300"
+                  href="mailto:support@davault.com"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-sm font-semibold">Language</h3>
+            <label for="language" class="sr-only">Choose language</label>
+            <select
+              id="language"
+              class="mt-5 w-full rounded-xl border border-white/10 bg-slate-900 px-3 py-3 text-sm text-slate-300 focus:border-emerald-400 focus:outline-none"
+            >
+              <option value="en">English (US)</option>
+              <option value="en-gb">English (UK)</option>
+              <option value="fr">Français</option>
+              <option value="es">Español</option>
+            </select>
+            <p id="language-note" class="mt-2 text-xs leading-5 text-slate-600">
+              Language selector preview only.
+            </p>
+          </div>
+        </div>
+
+        <div class="mt-12 border-t border-white/[0.07] pt-7">
+          <p class="text-xs leading-6 text-slate-600">
+            Risk disclosure: Investments involve risk, including possible loss
+            of principal. Past performance does not guarantee future results.
+            Market data, returns, platform metrics, security specifications,
+            insurance amounts, and testimonials on this page are illustrative
+            and unverified. This demo is not an offer to invest, financial
+            advice, or evidence of regulatory authorization. Obtain independent
+            professional advice where appropriate.
+          </p>
+          <div
+            class="mt-6 flex flex-col justify-between gap-3 text-xs text-slate-600 sm:flex-row sm:items-center"
+          >
+            <p>© <span id="year">2026</span> Optera Finance. Design concept.</p>
+            <p>Built for clarity. Designed with intention.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Mobile navigation
+      const menuToggle = document.getElementById("menu-toggle");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const menuIcon = document.getElementById("menu-icon");
+
+      function closeMenu() {
+        mobileMenu.classList.add("hidden");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Open navigation menu");
+        menuIcon.textContent = "☰";
+      }
+
+      menuToggle.addEventListener("click", () => {
+        const isOpen = menuToggle.getAttribute("aria-expanded") === "true";
+        mobileMenu.classList.toggle("hidden", isOpen);
+        menuToggle.setAttribute("aria-expanded", String(!isOpen));
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen ? "Open navigation menu" : "Close navigation menu",
+        );
+        menuIcon.textContent = isOpen ? "☰" : "✕";
+      });
+
+      mobileMenu
+        .querySelectorAll("a")
+        .forEach((link) => link.addEventListener("click", closeMenu));
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") closeMenu();
+      });
+
+      // Accessible FAQ accordion: one open item at a time.
+      document.querySelectorAll(".faq-question").forEach((button) => {
+        button.addEventListener("click", () => {
+          const item = button.closest(".faq-item");
+          const shouldOpen = !item.classList.contains("open");
+
+          document.querySelectorAll(".faq-item").forEach((other) => {
+            other.classList.remove("open");
+            other
+              .querySelector(".faq-question")
+              .setAttribute("aria-expanded", "false");
+          });
+
+          if (shouldOpen) {
+            item.classList.add("open");
+            button.setAttribute("aria-expanded", "true");
+          }
+        });
+      });
+
+      // Asset class tabs
+      const assetContent = {
+        realestate: {
+          kicker: "REAL ASSETS",
+          title: "Real Estate",
+          symbol: "PROPERTY",
+          description:
+            "Property investments may offer rental income and long-term appreciation, but they can involve substantial capital requirements, maintenance costs, valuation uncertainty, and limited liquidity.",
+          risks: [
+            "Location and property quality",
+            "Vacancy, maintenance, and financing costs",
+            "Liquidity and local market conditions",
+          ],
+          period: "Example view · 12 months",
+          color: "#34d399",
+          points:
+            "M0 120 L35 103 L70 110 L105 78 L140 91 L175 62 L210 72 L245 45 L280 58 L315 37 L350 52 L385 27 L420 39 L460 18 L500 25",
+        },
+        forex: {
+          kicker: "CURRENCY MARKETS",
+          title: "Forex Trading",
+          symbol: "FX PAIRS",
+          description:
+            "Foreign exchange markets involve trading currency pairs. Prices react to interest rates, economic data, policy decisions, and geopolitical events. Leverage can magnify losses.",
+          risks: [
+            "Leverage and margin calls",
+            "Rapid price movements",
+            "Broker and counterparty risk",
+          ],
+          period: "Example view · 12 months",
+          color: "#60a5fa",
+          points:
+            "M0 70 L35 84 L70 60 L105 92 L140 75 L175 110 L210 81 L245 96 L280 54 L315 73 L350 44 L385 62 L420 32 L460 48 L500 20",
+        },
+        crypto: {
+          kicker: "DIGITAL ASSETS",
+          title: "Cryptocurrency",
+          symbol: "CRYPTO",
+          description:
+            "Digital assets can experience significant price swings and may carry custody, cyber, regulatory, and liquidity risks. Not all tokens or trading venues are equally reliable.",
+          risks: [
+            "High volatility and possible total loss",
+            "Wallet, exchange, and fraud risk",
+            "Changing regulation and liquidity",
+          ],
+          period: "Example view · 12 months",
+          color: "#a78bfa",
+          points:
+            "M0 105 L35 42 L70 95 L105 50 L140 118 L175 65 L210 83 L245 30 L280 75 L315 45 L350 98 L385 25 L420 60 L460 15 L500 50",
+        },
+        energy: {
+          kicker: "COMMODITIES",
+          title: "Oil & Energy",
+          symbol: "ENERGY",
+          description:
+            "Energy exposure may come through commodities, listed companies, or funds. Prices can be affected by supply, demand, geopolitics, weather, and energy-transition policies.",
+          risks: [
+            "Supply shocks and geopolitical events",
+            "Commodity futures and rollover costs",
+            "Sector concentration",
+          ],
+          period: "Example view · 12 months",
+          color: "#fbbf24",
+          points:
+            "M0 100 L35 92 L70 75 L105 95 L140 55 L175 65 L210 42 L245 76 L280 62 L315 30 L350 48 L385 58 L420 24 L460 40 L500 20",
+        },
+        agriculture: {
+          kicker: "AGRICULTURAL MARKETS",
+          title: "Agriculture",
+          symbol: "AGRI",
+          description:
+            "Agricultural investments may relate to farmland, food producers, or crop commodities. Outcomes depend on weather, harvest yields, input costs, trade policy, and demand.",
+          risks: [
+            "Weather and crop disease",
+            "Commodity price volatility",
+            "Land access and operating costs",
+          ],
+          period: "Example view · 12 months",
+          color: "#a3e635",
+          points:
+            "M0 115 L35 90 L70 102 L105 75 L140 82 L175 48 L210 65 L245 54 L280 76 L315 45 L350 55 L385 34 L420 45 L460 20 L500 30",
+        },
+        gold: {
+          kicker: "PRECIOUS METALS",
+          title: "Gold Investment",
+          symbol: "XAU/USD",
+          description:
+            "Gold is sometimes used as a portfolio diversifier. Its price can respond to real interest rates, currency movements, central-bank demand, and market uncertainty. It does not generate income on its own.",
+          risks: [
+            "Price volatility and opportunity cost",
+            "Storage, insurance, or fund fees",
+            "Spread and counterparty risk",
+          ],
+          period: "Example view · 12 months",
+          color: "#fbbf24",
+          points:
+            "M0 125 L35 110 L70 118 L105 88 L140 95 L175 72 L210 85 L245 58 L280 64 L315 43 L350 55 L385 33 L420 40 L460 19 L500 24",
+        },
+      };
+
+      const tabs = [...document.querySelectorAll(".asset-tab")];
+
+      function selectAsset(key) {
+        const asset = assetContent[key];
+        if (!asset) return;
+
+        tabs.forEach((tab) => {
+          const selected = tab.dataset.asset === key;
+          tab.setAttribute("aria-selected", String(selected));
+          tab.tabIndex = selected ? 0 : -1;
+        });
+
+        document.getElementById("asset-kicker").textContent = asset.kicker;
+        document.getElementById("asset-title").textContent = asset.title;
+        document.getElementById("asset-symbol").textContent = asset.symbol;
+        document.getElementById("asset-description").textContent =
+          asset.description;
+        document.getElementById("asset-period").textContent = asset.period;
+
+        const risks = document.getElementById("asset-risks");
+        risks.replaceChildren(
+          ...asset.risks.map((text) => {
+            const li = document.createElement("li");
+            li.textContent = "• " + text;
+            return li;
+          }),
+        );
+
+        const chart = document.getElementById("asset-chart");
+        chart.replaceChildren();
+        const path = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "path",
+        );
+        path.setAttribute("d", asset.points);
+        path.setAttribute("fill", "none");
+        path.setAttribute("stroke", asset.color);
+        path.setAttribute("stroke-width", "3");
+        path.setAttribute("stroke-linejoin", "round");
+        path.setAttribute("stroke-linecap", "round");
+        chart.appendChild(path);
+        chart.setAttribute(
+          "aria-label",
+          "Illustrative " + asset.title + " trend, not actual market data",
+        );
+      }
+
+      tabs.forEach((tab, index) => {
+        tab.addEventListener("click", () => selectAsset(tab.dataset.asset));
+        tab.addEventListener("keydown", (event) => {
+          if (!["ArrowRight", "ArrowLeft", "Home", "End"].includes(event.key))
+            return;
+          event.preventDefault();
+          let next = index;
+          if (event.key === "ArrowRight") next = (index + 1) % tabs.length;
+          if (event.key === "ArrowLeft")
+            next = (index - 1 + tabs.length) % tabs.length;
+          if (event.key === "Home") next = 0;
+          if (event.key === "End") next = tabs.length - 1;
+          tabs[next].focus();
+          selectAsset(tabs[next].dataset.asset);
+        });
+      });
+
+      // Subtle reveal effects, with a fallback for browsers without IntersectionObserver.
+      const revealElements = document.querySelectorAll(".reveal");
+      if ("IntersectionObserver" in window) {
+        const revealObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+                revealObserver.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.12 },
+        );
+        revealElements.forEach((element) => revealObserver.observe(element));
+      } else {
+        revealElements.forEach((element) => element.classList.add("visible"));
+      }
+
+      // Animated demo counters. The values are design placeholders, not verified claims.
+      const counters = document.querySelectorAll("[data-counter]");
+      function animateCounter(element) {
+        if (element.dataset.counted === "true") return;
+        element.dataset.counted = "true";
+        const target = Number(element.dataset.counter);
+        const prefix = element.dataset.prefix || "";
+        const suffix = element.dataset.suffix || "";
+        const duration = 900;
+        const start = performance.now();
+
+        function tick(now) {
+          const progress = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          const value = Math.round(target * eased);
+          element.textContent = prefix + value.toLocaleString("en-US") + suffix;
+          if (progress < 1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+      }
+
+      if ("IntersectionObserver" in window) {
+        const counterObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                animateCounter(entry.target);
+                counterObserver.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.5 },
+        );
+        counters.forEach((counter) => counterObserver.observe(counter));
+      } else {
+        counters.forEach(animateCounter);
+      }
+
+      // Language selector is a visual preview; translations are not connected.
+      document
+        .getElementById("language")
+        .addEventListener("change", (event) => {
+          const note = document.getElementById("language-note");
+          const languages = {
+            en: "Language selector preview only.",
+            "en-gb": "English (UK) selected. Translation is not connected.",
+            fr: "Français sélectionné. Traduction non connectée.",
+            es: "Español seleccionado. Traducción no conectada.",
+          };
+          note.textContent = languages[event.target.value] || languages.en;
+        });
+
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
